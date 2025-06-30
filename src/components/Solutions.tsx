@@ -20,7 +20,7 @@ const Solutions = () => {
         "Interview Automation: Automated scheduling, reminders, and follow-up sequences",
         "Client Communication Hub: Automated updates, reports, and placement confirmations"
       ],
-      result: "Local recruitment firm increased placements by 180% while reducing manual work by 25 hours/week",
+      result: "Local recruitment firm increased placements by 180% whilst reducing manual work by 25 hours/week",
       color: "from-blue-600 to-blue-800"
     },
     {

@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Mouse } from 'lucide-react';
 
 const Hero = () => {
   const [currentHeadline, setCurrentHeadline] = useState(0);
@@ -25,8 +25,16 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-[#0F0F0F] to-[#1A1A1A] pt-24 pb-16">
-      <div className="container mx-auto px-4">
+    <section className="min-h-screen bg-gradient-to-b from-[#0F0F0F] to-[#1A1A1A] pt-24 pb-16 relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 opacity-10 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80')"
+        }}
+      ></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
@@ -65,7 +73,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+          <div className="flex justify-center items-center mb-16">
             <Button 
               onClick={scrollToContact}
               className="bg-[#8B1538] hover:bg-[#7A1230] text-white px-8 py-4 text-lg rounded-lg transition-all duration-300 hover:scale-105"
@@ -73,12 +81,14 @@ const Hero = () => {
               Book Your Free Automation Strategy Call
               <ArrowRight className="ml-2" size={20} />
             </Button>
-            <Button 
-              variant="outline"
-              className="border-[#8B1538] text-[#8B1538] hover:bg-[#8B1538] hover:text-white px-8 py-4 text-lg rounded-lg"
-            >
-              See Live Demo
-            </Button>
+          </div>
+
+          {/* Animated Mouse Scroll Indicator */}
+          <div className="flex justify-center">
+            <div className="flex flex-col items-center text-gray-400 animate-bounce">
+              <Mouse className="w-6 h-6 mb-2" />
+              <div className="text-sm">Scroll to explore</div>
+            </div>
           </div>
 
           <div className="mt-16 grid md:grid-cols-2 gap-12 items-center">
