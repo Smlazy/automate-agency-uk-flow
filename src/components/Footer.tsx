@@ -1,6 +1,14 @@
 
+import { Link, useLocation } from 'react-router-dom';
+
 const Footer = () => {
+  const location = useLocation();
+
   const scrollToSection = (id: string) => {
+    if (location.pathname !== '/') {
+      window.location.href = `/#${id}`;
+      return;
+    }
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -10,9 +18,9 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
-            <div className="text-2xl font-bold text-white mb-4">AutomateUK</div>
+            <Link to="/" className="text-2xl font-bold text-white mb-4 block">AutomateUK</Link>
             <p className="text-gray-300 text-sm mb-4">
-              Specialized automation for growing UK agencies. Transform your operations with intelligent automation that delivers measurable results.
+              Specialised automation for growing UK agencies. Transform your operations with intelligent automation that delivers measurable results.
             </p>
             <div className="text-[#8B1538] font-semibold text-sm">
               Based in the UK • Serving businesses nationwide
@@ -57,6 +65,11 @@ const Footer = () => {
                 <button onClick={() => scrollToSection('results')} className="hover:text-white transition-colors">
                   Case Studies
                 </button>
+              </li>
+              <li>
+                <Link to="/blog" className="hover:text-white transition-colors">
+                  Blog & Insights
+                </Link>
               </li>
               <li>
                 <button onClick={() => scrollToSection('pricing')} className="hover:text-white transition-colors">

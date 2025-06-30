@@ -2,11 +2,17 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const scrollToSection = (id: string) => {
+    if (location.pathname !== '/') {
+      window.location.href = `/#${id}`;
+      return;
+    }
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
@@ -16,9 +22,9 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#0F0F0F]/95 backdrop-blur-md border-b border-gray-800">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold text-white">
+          <Link to="/" className="text-2xl font-bold text-white">
             AutomateUK
-          </div>
+          </Link>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -34,6 +40,9 @@ const Header = () => {
             <button onClick={() => scrollToSection('results')} className="text-gray-300 hover:text-white transition-colors">
               Results
             </button>
+            <Link to="/blog" className="text-gray-300 hover:text-white transition-colors">
+              Blog
+            </Link>
             <button onClick={() => scrollToSection('contact')} className="text-gray-300 hover:text-white transition-colors">
               Contact
             </button>
@@ -73,6 +82,9 @@ const Header = () => {
               <button onClick={() => scrollToSection('results')} className="text-gray-300 hover:text-white transition-colors text-left">
                 Results
               </button>
+              <Link to="/blog" className="text-gray-300 hover:text-white transition-colors text-left" onClick={() => setIsMenuOpen(false)}>
+                Blog
+              </Link>
               <button onClick={() => scrollToSection('contact')} className="text-gray-300 hover:text-white transition-colors text-left">
                 Contact
               </button>
