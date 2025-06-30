@@ -1,0 +1,134 @@
+
+import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
+
+const Hero = () => {
+  const [currentHeadline, setCurrentHeadline] = useState(0);
+  
+  const headlines = [
+    "From 50 to 500 candidate calls per week - with the same team size",
+    "Nurture 10x more leads without hiring more staff", 
+    "Deliver 5x more campaigns while your team focuses on strategy"
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentHeadline((prev) => (prev + 1) % headlines.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <section className="min-h-screen bg-gradient-to-b from-[#0F0F0F] to-[#1A1A1A] pt-24 pb-16">
+      <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              Stop Losing Hours to <br />
+              <span className="text-[#8B1538]">Manual Tasks</span> - <br />
+              Start Scaling with AI Automation
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
+              We help UK Recruitment, Real Estate & Marketing Agencies save 20+ hours per week 
+              with custom AI automation that actually works.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
+              <div className="bg-[#1A1A1A] p-6 rounded-lg border border-gray-700">
+                <div className="text-[#8B1538] text-3xl font-bold mb-2">20-40</div>
+                <div className="text-gray-300">Hours saved per week</div>
+              </div>
+              <div className="bg-[#1A1A1A] p-6 rounded-lg border border-gray-700">
+                <div className="text-[#8B1538] text-3xl font-bold mb-2">300%</div>
+                <div className="text-gray-300">Lead conversion increase</div>
+              </div>
+              <div className="bg-[#1A1A1A] p-6 rounded-lg border border-gray-700">
+                <div className="text-[#8B1538] text-3xl font-bold mb-2">90 Days</div>
+                <div className="text-gray-300">ROI guaranteed or money back</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-[#1A1A1A] p-8 rounded-xl border border-gray-700 mb-12">
+            <div className="text-center">
+              <div className="text-gray-400 text-sm mb-2">Industry Success Stories:</div>
+              <div className="text-2xl md:text-3xl font-semibold text-white min-h-[80px] flex items-center justify-center transition-all duration-500">
+                {headlines[currentHeadline]}
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+            <Button 
+              onClick={scrollToContact}
+              className="bg-[#8B1538] hover:bg-[#7A1230] text-white px-8 py-4 text-lg rounded-lg transition-all duration-300 hover:scale-105"
+            >
+              Book Your Free Automation Strategy Call
+              <ArrowRight className="ml-2" size={20} />
+            </Button>
+            <Button 
+              variant="outline"
+              className="border-gray-600 text-white hover:bg-gray-800 px-8 py-4 text-lg rounded-lg"
+            >
+              See Live Demo
+            </Button>
+          </div>
+
+          <div className="mt-16 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-2xl font-semibold text-white mb-4">Before Automation</h3>
+              <ul className="space-y-3 text-gray-300">
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                  60% of time spent on repetitive tasks
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                  Slow response times losing leads
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                  Manual processes limiting growth
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                  Team overwhelmed with admin work
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-2xl font-semibold text-white mb-4">After Automation</h3>
+              <ul className="space-y-3 text-gray-300">
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                  Focus on high-value activities
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                  Instant lead responses & follow-ups
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                  Scalable operations without hiring
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                  Team empowered to drive growth
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
