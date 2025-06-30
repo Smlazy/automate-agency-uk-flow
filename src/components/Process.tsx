@@ -7,8 +7,8 @@ const Process = () => {
     {
       icon: Search,
       title: "Automation Audit",
-      timeline: "Week 1",
-      description: "We analyze your current workflows to identify the highest-ROI automation opportunities",
+      timeline: "Step 1",
+      description: "We analyse your current workflows to identify the highest-ROI automation opportunities",
       details: [
         "Map current workflows and identify bottlenecks",
         "Calculate time spent on repetitive tasks", 
@@ -19,19 +19,19 @@ const Process = () => {
     {
       icon: FileText,
       title: "Solution Design", 
-      timeline: "Week 2",
+      timeline: "Step 2",
       description: "Custom workflow design tailored to your specific business needs and existing tools",
       details: [
         "Design workflows specific to your business",
         "Create mockups and process flows",
         "Get stakeholder approval and feedback", 
-        "Finalize technical requirements"
+        "Finalise technical requirements"
       ]
     },
     {
       icon: Settings,
       title: "Build & Test",
-      timeline: "Weeks 3-4", 
+      timeline: "Step 3", 
       description: "Development and rigorous testing of your automation systems with full integration",
       details: [
         "Develop custom automation solutions",
@@ -42,12 +42,12 @@ const Process = () => {
     },
     {
       icon: ArrowUp,
-      title: "Launch & Optimize",
-      timeline: "Week 5+",
-      description: "Go-live support with ongoing optimization to maximize your automation ROI",
+      title: "Launch & Optimise",
+      timeline: "Step 4",
+      description: "Go-live support with ongoing optimisation to maximise your automation ROI",
       details: [
         "Go-live support and monitoring", 
-        "Performance tracking and optimization",
+        "Performance tracking and optimisation",
         "Ongoing maintenance and updates",
         "Monthly strategy and improvement calls"
       ]

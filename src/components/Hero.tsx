@@ -51,7 +51,7 @@ const Hero = () => {
               </div>
               <div className="bg-[#1A1A1A] p-6 rounded-lg border border-gray-700">
                 <div className="text-[#8B1538] text-3xl font-bold mb-2">90 Days</div>
-                <div className="text-gray-300">ROI guaranteed or money back</div>
+                <div className="text-gray-300">ROI within 90 days</div>
               </div>
             </div>
           </div>
@@ -75,7 +75,7 @@ const Hero = () => {
             </Button>
             <Button 
               variant="outline"
-              className="border-gray-600 text-white hover:bg-gray-800 px-8 py-4 text-lg rounded-lg"
+              className="border-[#8B1538] text-[#8B1538] hover:bg-[#8B1538] hover:text-white px-8 py-4 text-lg rounded-lg"
             >
               See Live Demo
             </Button>

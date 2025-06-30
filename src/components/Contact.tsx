@@ -116,11 +116,11 @@ const Contact = () => {
                     <SelectTrigger className="bg-[#0F0F0F] border-gray-600 text-white">
                       <SelectValue placeholder="Select your industry" />
                     </SelectTrigger>
-                    <SelectContent className="bg-[#0F0F0F] border-gray-600">
-                      <SelectItem value="recruitment">Recruitment Agency</SelectItem>
-                      <SelectItem value="realestate">Real Estate Agency</SelectItem>
-                      <SelectItem value="marketing">Marketing Agency</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                    <SelectContent className="bg-[#0F0F0F] border-gray-600 text-white">
+                      <SelectItem value="recruitment" className="text-white">Recruitment Agency</SelectItem>
+                      <SelectItem value="realestate" className="text-white">Real Estate Agency</SelectItem>
+                      <SelectItem value="marketing" className="text-white">Marketing Agency</SelectItem>
+                      <SelectItem value="other" className="text-white">Other</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -130,11 +130,11 @@ const Contact = () => {
                     <SelectTrigger className="bg-[#0F0F0F] border-gray-600 text-white">
                       <SelectValue placeholder="When do you want to start?" />
                     </SelectTrigger>
-                    <SelectContent className="bg-[#0F0F0F] border-gray-600">
-                      <SelectItem value="asap">ASAP</SelectItem>
-                      <SelectItem value="month">Within a month</SelectItem>
-                      <SelectItem value="quarter">Within 3 months</SelectItem>
-                      <SelectItem value="exploring">Just exploring</SelectItem>
+                    <SelectContent className="bg-[#0F0F0F] border-gray-600 text-white">
+                      <SelectItem value="asap" className="text-white">ASAP</SelectItem>
+                      <SelectItem value="month" className="text-white">Within a month</SelectItem>
+                      <SelectItem value="quarter" className="text-white">Within 3 months</SelectItem>
+                      <SelectItem value="exploring" className="text-white">Just exploring</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -156,28 +156,8 @@ const Contact = () => {
             </form>
           </Card>
 
-          {/* Contact Info & Quick Audit */}
+          {/* Contact Info */}
           <div className="space-y-8">
-            <Card className="bg-[#1A1A1A] border-gray-700 p-8">
-              <h3 className="text-2xl font-bold text-white mb-6">Get Instant Automation Audit</h3>
-              <p className="text-gray-300 mb-6">
-                Quick online assessment • Immediate opportunities report • Takes less than 5 minutes
-              </p>
-              <Button className="w-full bg-gray-700 hover:bg-gray-600 text-white py-3 mb-6">
-                Start Quick Audit
-              </Button>
-              
-              <div className="border-t border-gray-700 pt-6">
-                <h4 className="text-lg font-semibold text-white mb-4">What You'll Get:</h4>
-                <ul className="space-y-2 text-gray-300 text-sm">
-                  <li>• Personalized automation opportunities</li>
-                  <li>• Time savings calculations</li>
-                  <li>• ROI projections for your business</li>
-                  <li>• Recommended automation roadmap</li>
-                </ul>
-              </div>
-            </Card>
-
             <Card className="bg-[#1A1A1A] border-gray-700 p-8">
               <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
               
@@ -194,7 +174,7 @@ const Contact = () => {
                   <Mail className="text-[#8B1538] mr-4" size={20} />
                   <div>
                     <div className="text-white font-medium">hello@automateuk.co.uk</div>
-                    <div className="text-gray-400 text-sm">General inquiries</div>
+                    <div className="text-gray-400 text-sm">General enquiries</div>
                   </div>
                 </div>
                 
@@ -212,7 +192,7 @@ const Contact = () => {
                   <div className="font-medium text-white mb-2">Service Areas:</div>
                   <div>Proudly serving UK businesses nationwide</div>
                   <div className="mt-2">
-                    <span className="font-medium text-white">Specialization:</span> 
+                    <span className="font-medium text-white">Specialisation:</span> 
                     <span className="ml-1">Automation for growing agencies</span>
                   </div>
                 </div>
@@ -223,8 +203,8 @@ const Contact = () => {
               <h3 className="text-xl font-bold text-white mb-3">Why Choose AutomateUK?</h3>
               <ul className="space-y-2 text-white text-sm">
                 <li>✓ UK-based team with local expertise</li>
-                <li>✓ Specialized in agency workflows</li>
-                <li>✓ Guaranteed ROI within 90 days</li>
+                <li>✓ Specialised in agency workflows</li>
+                <li>✓ Proven ROI within 90 days</li>
                 <li>✓ Same timezone support</li>
                 <li>✓ Proven track record with UK agencies</li>
               </ul>

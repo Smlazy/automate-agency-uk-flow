@@ -51,7 +51,7 @@ const Solutions = () => {
         "Time-consuming client onboarding"
       ],
       solutions: [
-        "Campaign Management Hub: Automated ad setup, optimization, and budget management",
+        "Campaign Management Hub: Automated ad setup, optimisation, and budget management",
         "Smart Reporting: Automated client dashboards and performance reports",
         "Content Workflow Engine: Streamlined content creation, approval, and publishing",
         "Client Onboarding System: Automated welcome sequences and project kickoffs"
@@ -74,22 +74,22 @@ const Solutions = () => {
             Tailored Automation Solutions for Your Industry
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            We specialize in the unique workflows and challenges of three high-growth industries
+            We specialise in the unique workflows and challenges of three high-growth industries
           </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {solutions.map((solution, index) => (
-            <Card key={index} className="bg-[#0F0F0F] border-gray-700 p-8 hover:border-[#8B1538] transition-all duration-300">
+            <Card key={index} className="bg-[#0F0F0F] border-gray-700 p-8 hover:border-[#8B1538] transition-all duration-300 flex flex-col h-full">
               <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${solution.color} flex items-center justify-center mb-6`}>
                 <solution.icon className="text-white" size={32} />
               </div>
               
               <h3 className="text-2xl font-bold text-white mb-6">{solution.title}</h3>
               
-              <div className="mb-6">
+              <div className="mb-6 flex-grow">
                 <h4 className="text-lg font-semibold text-[#8B1538] mb-3">Core Problems We Solve:</h4>
-                <ul className="space-y-2">
+                <ul className="space-y-2 mb-6">
                   {solution.problems.map((problem, idx) => (
                     <li key={idx} className="text-gray-300 text-sm flex items-start">
                       <div className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
@@ -97,11 +97,9 @@ const Solutions = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
 
-              <div className="mb-6">
                 <h4 className="text-lg font-semibold text-[#8B1538] mb-3">Our Automation Solutions:</h4>
-                <ul className="space-y-3">
+                <ul className="space-y-3 mb-6">
                   {solution.solutions.map((sol, idx) => (
                     <li key={idx} className="text-gray-300 text-sm">
                       <div className="font-medium text-white">{sol.split(':')[0]}:</div>
@@ -109,16 +107,16 @@ const Solutions = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
 
-              <div className="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700 mb-6">
-                <div className="text-sm text-gray-400 mb-1">Results:</div>
-                <div className="text-white font-medium italic">"{solution.result}"</div>
+                <div className="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700">
+                  <div className="text-sm text-gray-400 mb-1">Results:</div>
+                  <div className="text-white font-medium italic">"{solution.result}"</div>
+                </div>
               </div>
 
               <Button 
                 onClick={scrollToContact}
-                className="w-full bg-[#8B1538] hover:bg-[#7A1230] text-white"
+                className="w-full bg-[#8B1538] hover:bg-[#7A1230] text-white mt-auto"
               >
                 Get Custom Solution
               </Button>
