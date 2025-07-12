@@ -124,8 +124,8 @@ const Solutions = () => {
           ))}
         </div>
 
-        <div className="text-center">
-          <div className="bg-[#0F0F0F] p-8 rounded-xl border border-gray-700 max-w-4xl mx-auto">
+        <div className="text-center max-w-4xl mx-auto">
+          <div className="bg-[#0F0F0F] p-8 rounded-xl border border-gray-700">
             <h3 className="text-2xl font-bold text-white mb-4">Don't See Your Industry?</h3>
             <p className="text-gray-300 mb-6">
               We've successfully automated workflows for dozens of other business types. 
@@ -135,7 +135,7 @@ const Solutions = () => {
               onClick={scrollToContact}
               className="bg-[#8B1538] hover:bg-[#7A1230] text-white px-8 py-3"
             >
-              Discuss Your Custom Needs
+              Schedule Your Free Consultation
             </Button>
           </div>
         </div>
