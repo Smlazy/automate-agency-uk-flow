@@ -99,9 +99,9 @@ const Pricing = () => {
               
               <div className="mb-6">
                 <div className="text-sm text-gray-400 mb-1">Setup Fee</div>
-                <div className="text-3xl font-bold text-[#8B1538] mb-3">{pkg.setupFee}</div>
+                <div className="text-3xl font-bold text-white mb-3">{pkg.setupFee}</div>
                 <div className="text-sm text-gray-400 mb-1">Monthly Retainer</div>
-                <div className="text-3xl font-bold text-[#8B1538] mb-4">{pkg.monthlyRetainer}<span className="text-lg text-gray-400">/month</span></div>
+                <div className="text-3xl font-bold text-white mb-4">{pkg.monthlyRetainer}<span className="text-lg text-gray-400">/month</span></div>
               </div>
               
               <p className="text-gray-300 mb-6 font-medium">{pkg.description}</p>

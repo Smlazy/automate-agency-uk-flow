@@ -1,6 +1,6 @@
 
 import { Card } from '@/components/ui/card';
-import { Phone, Mail, Clock } from 'lucide-react';
+import { Mail, Clock } from 'lucide-react';
 
 const ContactInfo = () => {
   return (
@@ -10,17 +10,9 @@ const ContactInfo = () => {
         
         <div className="space-y-4">
           <div className="flex items-center">
-            <Phone className="text-[#8B1538] mr-4" size={20} />
-            <div>
-              <div className="text-white font-medium">0800 XXX XXXX</div>
-              <div className="text-gray-400 text-sm">Free consultation line</div>
-            </div>
-          </div>
-          
-          <div className="flex items-center">
             <Mail className="text-[#8B1538] mr-4" size={20} />
             <div>
-              <div className="text-white font-medium">hello@automateuk.co.uk</div>
+              <div className="text-white font-medium">info@vantive.digital</div>
               <div className="text-gray-400 text-sm">General enquiries</div>
             </div>
           </div>
@@ -40,20 +32,20 @@ const ContactInfo = () => {
             <div>Proudly serving UK businesses nationwide</div>
             <div className="mt-2">
               <span className="font-medium text-white">Specialisation:</span> 
-              <span className="ml-1">Automation for growing agencies</span>
+              <span className="ml-1">Automation for growing businesses</span>
             </div>
           </div>
         </div>
       </Card>
 
       <div className="bg-gradient-to-r from-[#8B1538] to-[#7A1230] p-6 rounded-xl">
-        <h3 className="text-xl font-bold text-white mb-3">Why Choose AutomateUK?</h3>
+        <h3 className="text-xl font-bold text-white mb-3">Why Choose Vantive Digital?</h3>
         <ul className="space-y-2 text-white text-sm">
           <li>✓ UK-based team with local expertise</li>
-          <li>✓ Specialised in agency workflows</li>
-          <li>✓ Proven ROI within 90 days</li>
+          <li>✓ Specialised in business automation workflows</li>
+          <li>✓ Proven methodologies for ROI delivery</li>
           <li>✓ Same timezone support</li>
-          <li>✓ Proven track record with UK agencies</li>
+          <li>✓ Flexible, no long-term contracts</li>
         </ul>
       </div>
     </div>

@@ -11,7 +11,6 @@ const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
     company: '',
     industry: '',
     challenge: '',
@@ -32,7 +31,6 @@ const ContactForm = () => {
     setFormData({
       name: '',
       email: '',
-      phone: '',
       company: '',
       industry: '',
       challenge: '',
@@ -59,6 +57,7 @@ const ContactForm = () => {
               value={formData.name}
               onChange={(e) => handleChange('name', e.target.value)}
               className="bg-[#0F0F0F] border-gray-600 text-white"
+              placeholder="Your name"
               required
             />
           </div>
@@ -69,29 +68,21 @@ const ContactForm = () => {
               value={formData.email}
               onChange={(e) => handleChange('email', e.target.value)}
               className="bg-[#0F0F0F] border-gray-600 text-white"
+              placeholder="your.email@company.com"
               required
             />
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-white font-medium mb-2">Phone</label>
-            <Input
-              value={formData.phone}
-              onChange={(e) => handleChange('phone', e.target.value)}
-              className="bg-[#0F0F0F] border-gray-600 text-white"
-            />
-          </div>
-          <div>
-            <label className="block text-white font-medium mb-2">Company Name *</label>
-            <Input
-              value={formData.company}
-              onChange={(e) => handleChange('company', e.target.value)}
-              className="bg-[#0F0F0F] border-gray-600 text-white"
-              required
-            />
-          </div>
+        <div>
+          <label className="block text-white font-medium mb-2">Company Name *</label>
+          <Input
+            value={formData.company}
+            onChange={(e) => handleChange('company', e.target.value)}
+            className="bg-[#0F0F0F] border-gray-600 text-white"
+            placeholder="Your company name"
+            required
+          />
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
