@@ -6,11 +6,13 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAuth } from '@/hooks/useAuth';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Mail } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 export function AuthForm() {
   const { signIn, signUp } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [showEmailVerification, setShowEmailVerification] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -28,7 +30,10 @@ export function AuthForm() {
     e.preventDefault();
     setLoading(true);
     
-    await signIn(formData.email, formData.password);
+    const result = await signIn(formData.email, formData.password);
+    if (result.error) {
+      console.error('Sign in error:', result.error);
+    }
     setLoading(false);
   };
 
@@ -36,9 +41,40 @@ export function AuthForm() {
     e.preventDefault();
     setLoading(true);
     
-    await signUp(formData.email, formData.password, formData.fullName);
+    const result = await signUp(formData.email, formData.password, formData.fullName);
+    if (result.error) {
+      console.error('Sign up error:', result.error);
+    } else {
+      setShowEmailVerification(true);
+    }
     setLoading(false);
   };
+
+  if (showEmailVerification) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted/20 p-4">
+        <Card className="w-full max-w-md">
+          <CardHeader className="text-center">
+            <Mail className="mx-auto h-12 w-12 text-primary mb-4" />
+            <CardTitle className="text-2xl font-bold">Check Your Email</CardTitle>
+            <CardDescription>
+              We've sent you a verification link at {formData.email}. 
+              Please check your email and click the link to verify your account.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button 
+              variant="outline" 
+              className="w-full"
+              onClick={() => setShowEmailVerification(false)}
+            >
+              Back to Sign In
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted/20 p-4">
@@ -78,6 +114,7 @@ export function AuthForm() {
                     value={formData.password}
                     onChange={handleInputChange}
                     required
+                    minLength={6}
                   />
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>
@@ -89,6 +126,13 @@ export function AuthForm() {
             
             <TabsContent value="signup">
               <form onSubmit={handleSignUp} className="space-y-4">
+                <Alert>
+                  <Mail className="h-4 w-4" />
+                  <AlertDescription>
+                    Email verification is required for all new accounts.
+                  </AlertDescription>
+                </Alert>
+                
                 <div className="space-y-2">
                   <Label htmlFor="signup-name">Full Name</Label>
                   <Input
@@ -98,6 +142,7 @@ export function AuthForm() {
                     placeholder="Enter your full name"
                     value={formData.fullName}
                     onChange={handleInputChange}
+                    required
                   />
                 </div>
                 <div className="space-y-2">
@@ -118,15 +163,16 @@ export function AuthForm() {
                     id="signup-password"
                     name="password"
                     type="password"
-                    placeholder="Create a password"
+                    placeholder="Create a password (min. 6 characters)"
                     value={formData.password}
                     onChange={handleInputChange}
                     required
+                    minLength={6}
                   />
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>
                   {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                  Sign Up
+                  Create Account
                 </Button>
               </form>
             </TabsContent>

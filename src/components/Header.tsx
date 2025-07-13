@@ -11,22 +11,22 @@ const Header = () => {
   const { user } = useAuth();
 
   return (
-    <header className="bg-background/80 backdrop-blur-md border-b border-border/40 shadow-sm relative z-50">
+    <header className="bg-card/95 backdrop-blur-md border-b border-border shadow-lg relative z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
-            <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-destructive bg-clip-text text-transparent hover:opacity-80 transition-opacity">
               VANTIVE DIGITAL
             </Link>
           </div>
           
           <nav className="hidden md:flex space-x-8">
-            <a href="#services" className="text-muted-foreground hover:text-primary transition-colors font-medium">Services</a>
-            <a href="#process" className="text-muted-foreground hover:text-primary transition-colors font-medium">Process</a>
-            <a href="#results" className="text-muted-foreground hover:text-primary transition-colors font-medium">Results</a>
-            <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors font-medium">Pricing</a>
-            <Link to="/blog" className="text-muted-foreground hover:text-primary transition-colors font-medium">Blog</Link>
-            <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors font-medium">Contact</a>
+            <a href="#services" className="text-foreground hover:text-primary transition-colors font-medium hover:underline underline-offset-4">Services</a>
+            <a href="#process" className="text-foreground hover:text-primary transition-colors font-medium hover:underline underline-offset-4">Process</a>
+            <a href="#results" className="text-foreground hover:text-primary transition-colors font-medium hover:underline underline-offset-4">Results</a>
+            <a href="#pricing" className="text-foreground hover:text-primary transition-colors font-medium hover:underline underline-offset-4">Pricing</a>
+            <Link to="/blog" className="text-foreground hover:text-primary transition-colors font-medium hover:underline underline-offset-4">Blog</Link>
+            <a href="#contact" className="text-foreground hover:text-primary transition-colors font-medium hover:underline underline-offset-4">Contact</a>
           </nav>
 
           <div className="flex items-center space-x-4">
@@ -34,14 +34,14 @@ const Header = () => {
               <UserMenu />
             ) : (
               <Link to="/auth">
-                <Button variant="outline" className="border-primary/20 hover:border-primary/40">Sign In</Button>
+                <Button variant="outline" className="border-border hover:border-primary hover:bg-primary/10 text-foreground">Sign In</Button>
               </Link>
             )}
             
             <Button 
               variant="ghost" 
               size="icon"
-              className="md:hidden"
+              className="md:hidden text-foreground hover:bg-muted"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -50,14 +50,14 @@ const Header = () => {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden pb-4">
+          <div className="md:hidden pb-4 border-t border-border mt-4 pt-4">
             <nav className="flex flex-col space-y-4">
-              <a href="#services" className="text-muted-foreground hover:text-primary transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>Services</a>
-              <a href="#process" className="text-muted-foreground hover:text-primary transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>Process</a>
-              <a href="#results" className="text-muted-foreground hover:text-primary transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>Results</a>
-              <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>Pricing</a>
-              <Link to="/blog" className="text-muted-foreground hover:text-primary transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>Blog</Link>
-              <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>Contact</a>
+              <a href="#services" className="text-foreground hover:text-primary transition-colors font-medium hover:underline underline-offset-4" onClick={() => setIsMenuOpen(false)}>Services</a>
+              <a href="#process" className="text-foreground hover:text-primary transition-colors font-medium hover:underline underline-offset-4" onClick={() => setIsMenuOpen(false)}>Process</a>
+              <a href="#results" className="text-foreground hover:text-primary transition-colors font-medium hover:underline underline-offset-4" onClick={() => setIsMenuOpen(false)}>Results</a>
+              <a href="#pricing" className="text-foreground hover:text-primary transition-colors font-medium hover:underline underline-offset-4" onClick={() => setIsMenuOpen(false)}>Pricing</a>
+              <Link to="/blog" className="text-foreground hover:text-primary transition-colors font-medium hover:underline underline-offset-4" onClick={() => setIsMenuOpen(false)}>Blog</Link>
+              <a href="#contact" className="text-foreground hover:text-primary transition-colors font-medium hover:underline underline-offset-4" onClick={() => setIsMenuOpen(false)}>Contact</a>
             </nav>
           </div>
         )}
