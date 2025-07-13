@@ -1,99 +1,63 @@
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { UserMenu } from "@/components/auth/UserMenu";
+import { useAuth } from "@/hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
-
-  const scrollToSection = (id: string) => {
-    if (location.pathname !== '/') {
-      window.location.href = `/#${id}`;
-      return;
-    }
-    const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: 'smooth' });
-    setIsMenuOpen(false);
-  };
+  const { user } = useAuth();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0F0F0F]/95 backdrop-blur-md border-b border-gray-800">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold text-white">
-            V<span className="text-[#8B1538]">A</span>NTIVE D<span className="text-[#8B1538]">I</span>GITAL
-          </Link>
-          
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <button onClick={() => scrollToSection('solutions')} className="text-gray-300 hover:text-white transition-colors">
-              Solutions
-            </button>
-            <button onClick={() => scrollToSection('process')} className="text-gray-300 hover:text-white transition-colors">
-              Process
-            </button>
-            <button onClick={() => scrollToSection('pricing')} className="text-gray-300 hover:text-white transition-colors">
-              Pricing
-            </button>
-            <button onClick={() => scrollToSection('results')} className="text-gray-300 hover:text-white transition-colors">
-              Results
-            </button>
-            <Link to="/blog" className="text-gray-300 hover:text-white transition-colors">
-              Blog
+    <header className="bg-white shadow-sm relative z-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center py-4">
+          <div className="flex items-center">
+            <Link to="/" className="text-2xl font-bold text-primary">
+              <span className="text-accent">VANTIVE</span> DIGITAL
             </Link>
-            <button onClick={() => scrollToSection('contact')} className="text-gray-300 hover:text-white transition-colors">
-              Contact
-            </button>
+          </div>
+          
+          <nav className="hidden md:flex space-x-8">
+            <a href="#services" className="text-gray-600 hover:text-primary transition-colors">Services</a>
+            <a href="#process" className="text-gray-600 hover:text-primary transition-colors">Process</a>
+            <a href="#results" className="text-gray-600 hover:text-primary transition-colors">Results</a>
+            <a href="#pricing" className="text-gray-600 hover:text-primary transition-colors">Pricing</a>
+            <Link to="/blog" className="text-gray-600 hover:text-primary transition-colors">Blog</Link>
+            <a href="#contact" className="text-gray-600 hover:text-primary transition-colors">Contact</a>
           </nav>
 
-          <div className="hidden md:block">
+          <div className="flex items-center space-x-4">
+            {user ? (
+              <UserMenu />
+            ) : (
+              <Link to="/auth">
+                <Button variant="outline">Sign In</Button>
+              </Link>
+            )}
+            
             <Button 
-              onClick={() => scrollToSection('contact')}
-              className="bg-[#8B1538] hover:bg-[#7A1230] text-white px-6 py-2"
+              variant="ghost" 
+              size="icon"
+              className="md:hidden"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              Get Free Automation Audit
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-white"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-gray-800">
-            <nav className="flex flex-col space-y-4 mt-4">
-              <button onClick={() => scrollToSection('solutions')} className="text-gray-300 hover:text-white transition-colors text-left">
-                Solutions
-              </button>
-              <button onClick={() => scrollToSection('process')} className="text-gray-300 hover:text-white transition-colors text-left">
-                Process
-              </button>
-              <button onClick={() => scrollToSection('pricing')} className="text-gray-300 hover:text-white transition-colors text-left">
-                Pricing
-              </button>
-              <button onClick={() => scrollToSection('results')} className="text-gray-300 hover:text-white transition-colors text-left">
-                Results
-              </button>
-              <Link to="/blog" className="text-gray-300 hover:text-white transition-colors text-left" onClick={() => setIsMenuOpen(false)}>
-                Blog
-              </Link>
-              <button onClick={() => scrollToSection('contact')} className="text-gray-300 hover:text-white transition-colors text-left">
-                Contact
-              </button>
-              <Button 
-                onClick={() => scrollToSection('contact')}
-                className="bg-[#8B1538] hover:bg-[#7A1230] text-white w-full mt-4"
-              >
-                Get Free Automation Audit
-              </Button>
+          <div className="md:hidden pb-4">
+            <nav className="flex flex-col space-y-4">
+              <a href="#services" className="text-gray-600 hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>Services</a>
+              <a href="#process" className="text-gray-600 hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>Process</a>
+              <a href="#results" className="text-gray-600 hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>Results</a>
+              <a href="#pricing" className="text-gray-600 hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>Pricing</a>
+              <Link to="/blog" className="text-gray-600 hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>Blog</Link>
+              <a href="#contact" className="text-gray-600 hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>Contact</a>
             </nav>
           </div>
         )}
