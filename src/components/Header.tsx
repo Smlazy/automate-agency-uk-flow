@@ -21,7 +21,7 @@ const Header = () => {
           </div>
           
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#services" className="text-[#C0C0C0] hover:text-white transition-colors duration-200 font-medium relative group">
+            <a href="#solutions" className="text-[#C0C0C0] hover:text-white transition-colors duration-200 font-medium relative group">
               Services
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-200 group-hover:w-full"></span>
             </a>
@@ -53,7 +53,7 @@ const Header = () => {
             ) : (
               <Link to="/auth">
                 <Button className="bg-[#8B1538] hover:bg-[#A01B42] text-white px-6 py-2.5 rounded-md font-medium transition-all duration-200 hover:shadow-lg hover:shadow-[#8B1538]/20 transform hover:scale-105">
-                  Sign In
+                  Book Free Consultation
                 </Button>
               </Link>
             )}
@@ -74,7 +74,7 @@ const Header = () => {
             <div className="container mx-auto px-6 py-4">
               <nav className="flex flex-col space-y-4">
                 <a 
-                  href="#services" 
+                  href="#solutions" 
                   className="text-[#C0C0C0] hover:text-white transition-colors duration-200 font-medium py-2 border-l-2 border-transparent hover:border-[#8B1538] pl-4 hover:pl-6 transition-all" 
                   onClick={() => setIsMenuOpen(false)}
                 >

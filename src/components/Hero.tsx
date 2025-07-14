@@ -7,9 +7,9 @@ const Hero = () => {
   const [currentHeadline, setCurrentHeadline] = useState(0);
   
   const headlines = [
-    "From 50 to 500 candidate calls per week - with the same team size",
-    "Nurture 10x more leads without hiring more staff", 
-    "Deliver 5x more campaigns while your team focuses on strategy"
+    "Focus on product development while automation handles user onboarding and support workflows",
+    "Deliver exceptional client results while automation manages project coordination and reporting",
+    "Spend time on jobs, not paperwork - let automation handle scheduling and admin"
   ];
 
   useEffect(() => {
@@ -38,35 +38,33 @@ const Hero = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Stop Losing Hours to <br />
-              <span className="text-[#8B1538]">Manual Tasks</span> - <br />
-              Start Scaling with AI Automation
+              <span className="text-[#8B1538]">Intelligent Automation</span> <br />
+              for Business Continuity
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
-              We help UK Recruitment, Real Estate & Marketing Agencies save 20+ hours per week 
-              with custom AI automation that actually works.
+              We design enterprise-level automation systems that ensure business continuity, operational consistency, and competitive advantage for SAAS companies, agencies, and service professionals worldwide.
             </p>
 
             <div className="grid md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
               <div className="bg-[#1A1A1A] p-6 rounded-lg border border-gray-700">
-                <div className="text-[#8B1538] text-3xl font-bold mb-2">20-40</div>
-                <div className="text-gray-300">Hours saved per week</div>
+                <div className="text-[#8B1538] text-lg font-semibold mb-2">Most clients save</div>
+                <div className="text-gray-300">15-25 hours weekly on administrative tasks</div>
               </div>
               <div className="bg-[#1A1A1A] p-6 rounded-lg border border-gray-700">
-                <div className="text-[#8B1538] text-3xl font-bold mb-2">300%</div>
-                <div className="text-gray-300">Lead conversion increase</div>
+                <div className="text-[#8B1538] text-lg font-semibold mb-2">Streamlined operations</div>
+                <div className="text-gray-300">Typically show results within 30 days</div>
               </div>
               <div className="bg-[#1A1A1A] p-6 rounded-lg border border-gray-700">
-                <div className="text-[#8B1538] text-3xl font-bold mb-2">90 Days</div>
-                <div className="text-gray-300">ROI within 90 days</div>
+                <div className="text-[#8B1538] text-lg font-semibold mb-2">Focus on your expertise</div>
+                <div className="text-gray-300">While automation handles operational details</div>
               </div>
             </div>
           </div>
 
           <div className="bg-[#1A1A1A] p-8 rounded-xl border border-gray-700 mb-12">
             <div className="text-center">
-              <div className="text-gray-400 text-sm mb-2">Industry Success Stories:</div>
+              <div className="text-gray-400 text-sm mb-2">Industry-Specific Solutions:</div>
               <div className="text-2xl md:text-3xl font-semibold text-white min-h-[80px] flex items-center justify-center transition-all duration-500">
                 {headlines[currentHeadline]}
               </div>
@@ -74,13 +72,13 @@ const Hero = () => {
           </div>
 
           <div className="flex justify-center items-center mb-16">
-            <Button 
-              onClick={scrollToContact}
-              className="bg-[#8B1538] hover:bg-[#7A1230] text-white px-8 py-4 text-lg rounded-lg transition-all duration-300 hover:scale-105"
-            >
-              Book Your Free Automation Strategy Call
-              <ArrowRight className="ml-2" size={20} />
-            </Button>
+              <Button 
+                onClick={scrollToContact}
+                className="bg-[#8B1538] hover:bg-[#7A1230] text-white px-8 py-4 text-lg rounded-lg transition-all duration-300 hover:scale-105"
+              >
+                Book Free Consultation
+                <ArrowRight className="ml-2" size={20} />
+              </Button>
           </div>
 
           {/* Animated Mouse Scroll Indicator */}
