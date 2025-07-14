@@ -7,8 +7,8 @@ const Pricing = () => {
   const packages = [
     {
       name: "Starter Package",
-      setupFee: "£1,200",
-      monthlyRetainer: "£295",
+      price: "£1,200",
+      period: " setup + £295/month",
       icon: Zap,
       description: "Perfect for small businesses, single automation",
       features: [
@@ -20,12 +20,13 @@ const Pricing = () => {
         "30-day money-back guarantee"
       ],
       popular: false,
-      color: "from-blue-600 to-blue-800"
+      color: "from-blue-600 to-blue-800",
+      buttonText: "Get Started"
     },
     {
       name: "Professional Package",
-      setupFee: "£2,500",
-      monthlyRetainer: "£495",
+      price: "£2,500",
+      period: " setup + £495/month",
       icon: Star,
       description: "Perfect for growing companies, multiple automations",
       features: [
@@ -39,12 +40,13 @@ const Pricing = () => {
         "Free monthly strategy call"
       ],
       popular: true,
-      color: "from-[#8B1538] to-[#7A1230]"
+      color: "from-[#8B1538] to-[#7A1230]",
+      buttonText: "Most Popular"
     },
     {
       name: "Enterprise Package",
-      setupFee: "£4,500",
-      monthlyRetainer: "£795",
+      price: "£4,500",
+      period: " setup + £795/month",
       icon: Crown,
       description: "Perfect for large organizations, complex automation needs",
       features: [
@@ -59,7 +61,8 @@ const Pricing = () => {
         "Multi-department coordination"
       ],
       popular: false,
-      color: "from-purple-600 to-purple-800"
+      color: "from-purple-600 to-purple-800",
+      buttonText: "Contact Sales"
     }
   ];
 
@@ -80,12 +83,12 @@ const Pricing = () => {
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-8 mb-16">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {packages.map((pkg, index) => (
-            <Card key={index} className={`bg-[#0F0F0F] border-gray-700 p-8 relative transition-all duration-300 hover:border-[#8B1538] hover:shadow-2xl hover:-translate-y-2 ${pkg.popular ? 'ring-2 ring-[#8B1538] shadow-xl' : 'shadow-lg'}`}>
+            <Card key={index} className={`bg-[#0F0F0F] border-gray-700 p-8 transition-all duration-300 hover:border-[#8B1538] hover:shadow-2xl hover:-translate-y-2 flex flex-col h-full relative ${pkg.popular ? 'ring-2 ring-[#8B1538] shadow-xl' : 'shadow-lg'}`}>
               {pkg.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-[#8B1538] text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                  <span className="bg-[#8B1538] text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
                     Most Popular
                   </span>
                 </div>
@@ -95,32 +98,43 @@ const Pricing = () => {
                 <pkg.icon className="text-white" size={32} />
               </div>
 
-              <h3 className="text-2xl font-bold text-white mb-4">{pkg.name}</h3>
-              
-              <div className="mb-6">
-                <div className="text-sm text-gray-400 mb-1">Setup Fee</div>
-                <div className="text-3xl font-bold text-white mb-3">{pkg.setupFee}</div>
-                <div className="text-sm text-gray-400 mb-1">Monthly Retainer</div>
-                <div className="text-3xl font-bold text-white mb-4">{pkg.monthlyRetainer}<span className="text-lg text-gray-400">/month</span></div>
+              {/* Header Section */}
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-white mb-2">{pkg.name}</h3>
+                <div className="mb-4">
+                  <div className="text-3xl font-bold text-white">
+                    {pkg.price}
+                    <span className="text-lg text-[#C0C0C0] font-normal">{pkg.period}</span>
+                  </div>
+                </div>
+                <p className="text-[#C0C0C0] font-medium leading-relaxed">{pkg.description}</p>
               </div>
-              
-              <p className="text-gray-300 mb-6 font-medium">{pkg.description}</p>
 
-              <ul className="space-y-3 mb-8">
-                {pkg.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start text-gray-300">
-                    <Check className="text-[#8B1538] mr-3 mt-0.5 flex-shrink-0" size={16} />
-                    <span className="text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              {/* Features Section - Grows to fill space */}
+              <div className="flex-grow">
+                <ul className="space-y-3 mb-6">
+                  {pkg.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start text-[#C0C0C0]">
+                      <Check className="text-[#8B1538] mr-3 mt-0.5 flex-shrink-0" size={16} />
+                      <span className="text-sm leading-relaxed">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-              <Button 
-                onClick={scrollToContact}
-                className={`w-full ${pkg.popular ? 'bg-[#8B1538] hover:bg-[#7A1230]' : 'bg-gray-700 hover:bg-gray-600'} text-white font-semibold py-3 transition-all duration-300 hover:shadow-lg`}
-              >
-                Schedule Your Free Consultation
-              </Button>
+              {/* Button Section - Always at bottom */}
+              <div className="mt-auto">
+                <Button 
+                  onClick={scrollToContact}
+                  className={`w-full py-3 px-6 rounded-md font-medium transition-all duration-200 active:scale-95 ${
+                    pkg.popular 
+                      ? 'bg-[#8B1538] hover:bg-[#A01B42] text-white hover:shadow-lg' 
+                      : 'bg-transparent border-2 border-[#8B1538] text-[#8B1538] hover:bg-[#8B1538] hover:text-white'
+                  }`}
+                >
+                  Schedule Your Free Consultation
+                </Button>
+              </div>
             </Card>
           ))}
         </div>
@@ -159,7 +173,7 @@ const Pricing = () => {
 
               <Button 
                 onClick={scrollToContact}
-                className="bg-[#8B1538] hover:bg-[#7A1230] text-white px-8 py-3 font-semibold text-lg transition-all duration-300 hover:shadow-lg"
+                className="bg-[#8B1538] hover:bg-[#A01B42] text-white px-8 py-3 font-semibold text-lg transition-all duration-300 hover:shadow-lg"
               >
                 Schedule Your Free Consultation
               </Button>
