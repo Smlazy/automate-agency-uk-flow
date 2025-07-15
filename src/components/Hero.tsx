@@ -54,11 +54,11 @@ const Hero = () => {
               </div>
               <div className="bg-[#1A1A1A] p-6 rounded-lg border border-gray-700">
                 <div className="text-emerald-500 text-lg font-semibold mb-2">Streamlined operations</div>
-                <div className="text-gray-300">Typically show results within 30 days</div>
+                <div className="text-gray-300">typically show results within 30 days</div>
               </div>
               <div className="bg-[#1A1A1A] p-6 rounded-lg border border-gray-700">
                 <div className="text-emerald-500 text-lg font-semibold mb-2">Focus on your expertise</div>
-                <div className="text-gray-300">While automation handles operational details</div>
+                <div className="text-gray-300">while automation handles operational details</div>
               </div>
             </div>
           </div>

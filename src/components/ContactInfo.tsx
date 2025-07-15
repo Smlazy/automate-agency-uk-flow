@@ -1,6 +1,6 @@
 
 import { Card } from '@/components/ui/card';
-import { Mail, Clock } from 'lucide-react';
+import { Mail, Clock, MapPin } from 'lucide-react';
 
 const ContactInfo = () => {
   return (
@@ -10,41 +10,45 @@ const ContactInfo = () => {
         
         <div className="space-y-4">
           <div className="flex items-center">
-            <Mail className="text-[#8B1538] mr-4" size={20} />
+            <Mail className="text-emerald-500 mr-4" size={20} />
             <div>
-              <div className="text-white font-medium">info@vantive.digital</div>
+              <div className="text-white font-medium">Info@Vantive.digital</div>
               <div className="text-gray-400 text-sm">General enquiries</div>
             </div>
           </div>
           
           <div className="flex items-center">
-            <Clock className="text-[#8B1538] mr-4" size={20} />
+            <Clock className="text-emerald-500 mr-4" size={20} />
             <div>
-              <div className="text-white font-medium">Response within 2 hours</div>
+              <div className="text-white font-medium">Response within 4 hours</div>
               <div className="text-gray-400 text-sm">During business hours</div>
+            </div>
+          </div>
+
+          <div className="flex items-center">
+            <MapPin className="text-emerald-500 mr-4" size={20} />
+            <div>
+              <div className="text-white font-medium">Based in London</div>
+              <div className="text-gray-400 text-sm">Serving businesses globally</div>
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-700 pt-6 mt-6">
           <div className="text-sm text-gray-300">
-            <div className="font-medium text-white mb-2">Service Areas:</div>
-            <div>Proudly serving UK businesses nationwide</div>
-            <div className="mt-2">
-              <span className="font-medium text-white">Specialisation:</span> 
-              <span className="ml-1">Automation for growing businesses</span>
-            </div>
+            <div className="font-medium text-white mb-2">Specialization:</div>
+            <div>Intelligent automation for SAAS, agencies, and service professionals</div>
           </div>
         </div>
       </Card>
 
-      <div className="bg-gradient-to-r from-[#8B1538] to-[#7A1230] p-6 rounded-xl">
+      <div className="bg-gradient-to-r from-emerald-500 to-indigo-500 p-6 rounded-xl">
         <h3 className="text-xl font-bold text-white mb-3">Why Choose Vantive Digital?</h3>
         <ul className="space-y-2 text-white text-sm">
           <li>✓ UK-based team with local expertise</li>
           <li>✓ Specialised in business automation workflows</li>
-          <li>✓ Proven methodologies for ROI delivery</li>
-          <li>✓ Same timezone support</li>
+          <li>✓ Enterprise-level methodology for growing businesses</li>
+          <li>✓ Same timezone support and communication</li>
           <li>✓ Flexible, no long-term contracts</li>
         </ul>
       </div>

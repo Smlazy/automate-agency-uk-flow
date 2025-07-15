@@ -54,7 +54,7 @@ const NetworkBackground = () => {
 
         // Draw node
         ctx.fillStyle = node.color;
-        ctx.globalAlpha = 0.3;
+        ctx.globalAlpha = 0.4;
         ctx.beginPath();
         ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
         ctx.fill();
@@ -92,7 +92,7 @@ const NetworkBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full opacity-20"
+      className="absolute inset-0 w-full h-full opacity-25"
       style={{ pointerEvents: 'none' }}
     />
   );

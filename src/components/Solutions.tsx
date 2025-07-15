@@ -1,46 +1,46 @@
 
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Code, Users, Wrench } from 'lucide-react';
+import { Monitor, Users, Wrench } from 'lucide-react';
 
 const Solutions = () => {
   const niches = [
     {
-      icon: Code,
+      icon: Monitor,
       title: "SAAS",
-      subtitle: null,
+      subtitle: "Software as a Service Companies",
       description: "Streamline user onboarding, boost feature adoption, and reduce churn with intelligent automation workflows designed for software companies.",
       results: [
-        "40% increase in trial-to-paid conversions",
-        "60% reduction in user onboarding time", 
-        "35% improvement in feature adoption rates",
-        "25% decrease in customer churn"
+        "80% reduction in manual onboarding time while improving user activation rates by 35%",
+        "Intelligent ticket routing and automated response systems",
+        "Automated reporting dashboards and performance tracking",
+        "Smart trial management and strategic upgrade prompting"
       ],
-      color: "from-blue-600 to-blue-800"
+      color: "from-emerald-600 to-emerald-800"
     },
     {
       icon: Users,
       title: "Agencies", 
       subtitle: "Including Real Estate, Marketing & Recruitment",
-      description: "Automate lead qualification, client communication, and project management to scale your agency operations without hiring additional staff.",
+      description: "Automate client communication, project coordination, and performance reporting to scale your agency operations without hiring additional staff.",
       results: [
-        "300% increase in qualified leads",
-        "50% reduction in manual data entry",
-        "80% faster client response times", 
-        "45% improvement in project delivery speed"
+        "70% reduction in client reporting time and improved project delivery consistency by 45%",
+        "Automated communication workflows and milestone tracking",
+        "Real-time client dashboards and automated report generation",
+        "Smart qualification systems and conversion optimization"
       ],
-      color: "from-green-600 to-green-800"
+      color: "from-indigo-600 to-indigo-800"
     },
     {
       icon: Wrench,
-      title: "Servicemen",
-      subtitle: "Plumbers, Electricians & Trade Professionals", 
+      title: "Service Professionals",
+      subtitle: "Plumbers, Electricians & Trade Specialists", 
       description: "Automate appointment booking, customer follow-ups, and invoice processing to focus on what you do best while growing your business.",
       results: [
-        "70% more appointments booked automatically",
-        "90% reduction in no-shows with automated reminders",
-        "55% faster invoice processing and payment collection",
-        "40% increase in repeat customer bookings"
+        "85% reduction in no-shows and 60% faster payment collection",
+        "Automated booking confirmations and customer reminder sequences",
+        "Streamlined invoicing and automated payment reminders",
+        "Digital documentation workflows and quality control systems"
       ],
       color: "from-purple-600 to-purple-800"
     }
@@ -65,27 +65,27 @@ const Solutions = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {niches.map((niche, index) => (
-            <Card key={index} className="bg-[#0F0F0F] border-gray-700 p-8 hover:border-[#8B1538] transition-all duration-300 flex flex-col h-full">
-              <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${niche.color} flex items-center justify-center mb-6`}>
-                <niche.icon className="text-white" size={32} />
+            <Card key={index} className="bg-[#0F0F0F] border-gray-700 p-8 hover:border-emerald-500 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20 flex flex-col h-full">
+              <div className={`w-20 h-20 rounded-lg bg-gradient-to-r ${niche.color} flex items-center justify-center mb-6 shadow-lg`}>
+                <niche.icon className="text-white" size={48} />
               </div>
               
               {/* Content Section - Grows to fill space */}
               <div className="flex-grow">
                 <h3 className="text-2xl font-bold text-white mb-2">{niche.title}</h3>
                 {niche.subtitle && (
-                  <p className="text-[#C0C0C0] text-sm mb-4 font-medium">{niche.subtitle}</p>
+                  <p className="text-indigo-400 text-sm mb-4 font-medium min-h-[40px] flex items-center">{niche.subtitle}</p>
                 )}
                 <p className="text-gray-300 mb-6 leading-relaxed">{niche.description}</p>
 
                 {/* Results Section - Consistent Height */}
                 <div className="mb-6">
-                  <h4 className="text-white font-semibold mb-3">Results:</h4>
+                  <h4 className="text-white font-semibold mb-3">Typical Results:</h4>
                   <div className="space-y-2 min-h-[120px] flex flex-col justify-start">
                     {niche.results.map((result, idx) => (
-                      <div key={idx} className="flex items-start text-[#C0C0C0] text-sm">
-                        <span className="w-2 h-2 bg-[#8B1538] rounded-full mt-1.5 mr-3 flex-shrink-0"></span>
-                        <span className="leading-relaxed">"{result}"</span>
+                      <div key={idx} className="flex items-start text-gray-300 text-sm">
+                        <span className="w-2 h-2 bg-emerald-500 rounded-full mt-1.5 mr-3 flex-shrink-0"></span>
+                        <span className="leading-relaxed">{result}</span>
                       </div>
                     ))}
                   </div>
@@ -96,7 +96,7 @@ const Solutions = () => {
               <div className="mt-auto">
                 <Button 
                   onClick={scrollToContact}
-                  className="w-full bg-[#8B1538] hover:bg-[#A01B42] text-white py-3 px-6 font-medium transition-all duration-200 hover:shadow-lg active:scale-95"
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-6 font-medium transition-all duration-200 hover:shadow-lg active:scale-95"
                 >
                   Learn More
                 </Button>
@@ -114,7 +114,7 @@ const Solutions = () => {
             </p>
             <Button 
               onClick={scrollToContact}
-              className="bg-[#8B1538] hover:bg-[#A01B42] text-white px-8 py-3"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3"
             >
               Schedule Your Free Consultation
             </Button>

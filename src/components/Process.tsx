@@ -1,6 +1,6 @@
 
 import { Card } from '@/components/ui/card';
-import { Search, FileText, Settings, ArrowUp } from 'lucide-react';
+import { Search, FileText, Settings, TrendingUp } from 'lucide-react';
 
 const Process = () => {
   const steps = [
@@ -41,7 +41,7 @@ const Process = () => {
       ]
     },
     {
-      icon: ArrowUp,
+      icon: TrendingUp,
       title: "Launch & Optimise",
       timeline: "Step 4",
       description: "Go-live support with ongoing optimisation to maximise your automation ROI",
@@ -59,28 +59,33 @@ const Process = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            From Manual Chaos to Automated Excellence
+            From Manual Processes to Automated Excellence
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Our proven 4-step framework has transformed hundreds of UK agencies
+            Our proven 4-step framework transforms business operations with measurable results
           </p>
         </div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
             {steps.map((step, index) => (
               <div key={index} className="relative">
                 {/* Connection Line */}
                 {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-16 left-full w-8 h-0.5 bg-[#8B1538] z-10 transform translate-x-4"></div>
+                  <div className="hidden lg:block absolute top-20 left-full w-8 h-0.5 bg-gradient-to-r from-emerald-500 to-indigo-500 z-10 transform translate-x-4"></div>
                 )}
                 
-                <Card className="bg-[#1A1A1A] border-gray-700 p-6 h-full hover:border-[#8B1538] transition-all duration-300">
+                <Card className="bg-[#1A1A1A] border-gray-700 p-6 h-full hover:border-emerald-500 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20">
                   <div className="text-center mb-6">
-                    <div className="w-16 h-16 bg-[#8B1538] rounded-full flex items-center justify-center mx-auto mb-4">
-                      <step.icon className="text-white" size={28} />
+                    <div className="relative">
+                      <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <step.icon className="text-white" size={28} />
+                      </div>
+                      <div className="absolute -top-2 -right-2 w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
+                        {index + 1}
+                      </div>
                     </div>
-                    <div className="text-sm text-[#8B1538] font-semibold mb-2">{step.timeline}</div>
+                    <div className="text-sm text-emerald-500 font-semibold mb-2">{step.timeline}</div>
                     <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
                     <p className="text-gray-300 text-sm">{step.description}</p>
                   </div>
@@ -88,7 +93,7 @@ const Process = () => {
                   <div className="space-y-2">
                     {step.details.map((detail, idx) => (
                       <div key={idx} className="flex items-start text-sm">
-                        <div className="w-1.5 h-1.5 bg-[#8B1538] rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
                         <div className="text-gray-300">{detail}</div>
                       </div>
                     ))}
@@ -103,15 +108,15 @@ const Process = () => {
               <h3 className="text-2xl font-bold text-white mb-4">Why Our Process Works</h3>
               <div className="grid md:grid-cols-3 gap-6 text-center">
                 <div>
-                  <div className="text-3xl font-bold text-[#8B1538] mb-2">95%</div>
+                  <div className="text-3xl font-bold text-emerald-500 mb-2">95%</div>
                   <div className="text-gray-300">Implementation Success Rate</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-[#8B1538] mb-2">30 Days</div>
+                  <div className="text-3xl font-bold text-emerald-500 mb-2">30 Days</div>
                   <div className="text-gray-300">Average Time to ROI</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-[#8B1538] mb-2">100%</div>
+                  <div className="text-3xl font-bold text-emerald-500 mb-2">100%</div>
                   <div className="text-gray-300">Client Satisfaction</div>
                 </div>
               </div>
