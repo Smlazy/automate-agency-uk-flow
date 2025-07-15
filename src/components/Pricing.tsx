@@ -1,414 +1,246 @@
 
 import { useState } from 'react';
+import { Check, Star, Clock, Users, Headphones, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Check, Star, Crown, Zap, Shield, Users, Clock, MessageSquare, Phone, Headphones } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const Pricing = () => {
   const [selectedPackage, setSelectedPackage] = useState('growth');
-  const [selectedSupport, setSelectedSupport] = useState('basic');
+  const [selectedSupport, setSelectedSupport] = useState<string | null>(null);
 
-  const setupPackages = [
+  const packages = [
     {
-      id: 'starter',
-      name: "Starter Package",
-      price: "£1,199",
-      period: " one-time setup",
-      icon: Zap,
-      description: "Template-based workflows adapted to your operations",
+      id: 'startup',
+      name: 'Startup Launch',
+      price: '£2,500',
+      description: 'Perfect for new businesses ready to automate their first processes',
       features: [
-        "Template-based workflows adapted to your operations",
-        "2-3 core business tool integrations",
-        "Basic email sequences and CRM synchronization",
-        "Complete documentation and self-service guides",
-        "30 days of included support during launch period"
+        '1-2 Core Automation Processes',
+        'Basic Integration Setup',
+        'Standard Documentation',
+        '30-Day Launch Period',
+        'Email Support During Setup'
       ],
-      popular: false,
-      color: "from-indigo-600 to-indigo-800",
-      buttonText: "Select Starter",
-      buttonColor: "bg-indigo-600 hover:bg-indigo-700"
+      popular: false
     },
     {
       id: 'growth',
-      name: "Growth Package",
-      price: "£2,385",
-      period: " one-time setup",
-      icon: Star,
-      description: "Bespoke automation architecture designed for your processes",
+      name: 'Growth Accelerator',
+      price: '£4,500',
+      description: 'Ideal for growing businesses wanting comprehensive automation',
       features: [
-        "Bespoke automation architecture designed for your processes",
-        "Full tech stack integration across all business platforms",
-        "Advanced conditional logic and multi-step workflows",
-        "Performance dashboard and optimization tracking",
-        "30 days of included support during launch period"
+        '3-5 Advanced Automation Processes',
+        'Multi-Platform Integration',
+        'Custom Workflow Design',
+        '30-Day Launch Period',
+        'Priority Support & Training',
+        'Performance Analytics Setup'
       ],
-      popular: true,
-      color: "from-emerald-600 to-emerald-800",
-      buttonText: "Select Growth",
-      buttonColor: "bg-emerald-600 hover:bg-emerald-700"
+      popular: true
     },
     {
       id: 'enterprise',
-      name: "Enterprise Package",
-      price: "Custom Quote",
-      period: " tailored solution",
-      icon: Crown,
-      description: "End-to-end process re-engineering and optimization",
+      name: 'Enterprise Scale',
+      price: '£7,500',
+      description: 'For established businesses requiring complex automation ecosystems',
       features: [
-        "End-to-end process re-engineering and optimization",
-        "Custom API development and unlimited platform connections",
-        "AI-powered decision workflows and predictive automation",
-        "Executive-level implementation and change management",
-        "30 days of included support during launch period"
+        '6+ Complex Automation Systems',
+        'Enterprise-Grade Integrations',
+        'Custom API Development',
+        '30-Day Launch Period',
+        'Dedicated Success Manager',
+        'Advanced Analytics & Reporting',
+        'Staff Training Program'
       ],
-      popular: false,
-      color: "from-purple-600 to-purple-800",
-      buttonText: "Get Custom Quote",
-      buttonColor: "bg-indigo-600 hover:bg-indigo-700"
+      popular: false
     }
   ];
 
   const supportPackages = [
     {
-      id: 'none',
-      name: "No Support",
-      price: "£0",
-      period: "/month",
-      icon: Shield,
-      description: "Self-manage with provided documentation",
+      id: 'essential',
+      name: 'Essential Support',
+      price: '£200/month',
+      description: 'Basic ongoing support for your automation systems',
       features: [
-        "Self-manage with provided documentation",
-        "Complete training materials included",
-        "Ad-hoc support available at hourly rates"
+        'Email Support (24h response)',
+        'Monthly System Health Check',
+        'Basic Troubleshooting',
+        'Documentation Updates'
       ],
-      recommended: false
+      icon: <Headphones className="h-6 w-6" />
     },
     {
-      id: 'basic',
-      name: "Basic Support",
-      price: "£195",
-      period: "/month",
-      icon: MessageSquare,
-      description: "Proactive monitoring and issue resolution",
+      id: 'professional',
+      name: 'Professional Support',
+      price: '£400/month',
+      description: 'Enhanced support with proactive monitoring',
       features: [
-        "Proactive monitoring and issue resolution",
-        "Email support (24-hour response)",
-        "Minor updates and improvements",
-        "Monthly performance reports"
+        'Priority Email & Phone Support',
+        'Weekly Performance Reviews',
+        'Proactive Issue Resolution',
+        'Minor Workflow Adjustments',
+        'Monthly Strategy Calls'
       ],
-      recommended: true
+      icon: <Users className="h-6 w-6" />
     },
     {
       id: 'premium',
-      name: "Premium Support",
-      price: "£485",
-      period: "/month",
-      icon: Phone,
-      description: "Everything in Basic plus priority response",
+      name: 'Premium Support',
+      price: '£600/month',
+      description: 'Comprehensive support with continuous optimization',
       features: [
-        "Everything in Basic plus priority 4-hour response",
-        "Monthly strategy and optimization calls",
-        "Workflow improvements and additions",
-        "Dedicated support channel"
+        'White-Glove Support Experience',
+        'Daily Monitoring & Alerts',
+        'Continuous Optimization',
+        'New Feature Development',
+        'Dedicated Account Manager',
+        'Emergency Response (4h)'
       ],
-      recommended: false
-    },
-    {
-      id: 'enterprise',
-      name: "Enterprise Support",
-      price: "£975",
-      period: "/month",
-      icon: Headphones,
-      description: "Complete managed service experience",
-      features: [
-        "Everything in Premium plus dedicated account manager",
-        "Quarterly business reviews and strategic planning",
-        "Custom development and new integrations",
-        "Same-day response with comprehensive SLA"
-      ],
-      recommended: false
+      icon: <Zap className="h-6 w-6" />
     }
   ];
 
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    element?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const handlePackageSelect = (packageId: string) => {
-    setSelectedPackage(packageId);
-  };
-
-  const handleSupportSelect = (supportId: string) => {
+  const handleSupportSelection = (supportId: string) => {
     setSelectedSupport(selectedSupport === supportId ? null : supportId);
   };
 
   return (
-    <section id="pricing" className="py-20 bg-[#1A1A1A]">
+    <section id="pricing" className="py-20 bg-[#0F0F0F]">
       <div className="container mx-auto px-4">
+        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Flexible Pricing That Works for You
+            Simple, Transparent Pricing
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-4">
-            Choose your setup package, then add optional support if you want us to handle the technical details.
-          </p>
-          <p className="text-emerald-400 font-medium">
-            All packages include 30 days of support. Ongoing support packages begin after your launch period.
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Choose your automation package and ongoing support level. No hidden fees, no long-term contracts.
           </p>
         </div>
 
-        {/* Step 1: Setup Packages */}
+        {/* Setup Packages */}
         <div className="mb-20">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-white mb-4">Step 1: Choose Your Setup Package</h3>
-            <p className="text-gray-300">One-time investment to get your automation systems built and launched</p>
-          </div>
-
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-            {setupPackages.map((pkg, index) => {
-              const isSelected = selectedPackage === pkg.id;
-              const isGrowth = pkg.id === 'growth';
-              const shouldScale = isSelected && !isGrowth;
-              
-              return (
-                <Card 
-                  key={index} 
-                  className={`bg-[#0F0F0F] border-gray-700 p-8 transition-all duration-300 hover:border-emerald-500 hover:shadow-2xl hover:-translate-y-2 flex flex-col h-full relative cursor-pointer
-                    ${isSelected ? 'ring-2 ring-emerald-500 shadow-xl' : 'shadow-lg'}
-                    ${shouldScale ? 'scale-105' : ''}
-                    ${isGrowth && !isSelected ? '' : isGrowth ? 'scale-105' : ''}
-                  `}
-                  onClick={() => handlePackageSelect(pkg.id)}
-                >
-                  {(pkg.popular && (isSelected || pkg.id === 'growth')) && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                      <span className="bg-emerald-500 text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
-                        Most Popular
-                      </span>
-                    </div>
-                  )}
-                  
-                  <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${pkg.color} flex items-center justify-center mb-6 shadow-lg`}>
-                    <pkg.icon className="text-white" size={32} />
-                  </div>
-
-                  <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">{pkg.name}</h3>
-                    <div className="mb-4">
-                      <div className="text-3xl font-bold text-white">
-                        {pkg.price}
-                        <span className="text-lg text-gray-400 font-normal">{pkg.period}</span>
-                      </div>
-                    </div>
-                    <p className="text-gray-300 font-medium leading-relaxed">{pkg.description}</p>
-                  </div>
-
-                  <div className="flex-grow">
-                    <ul className="space-y-3 mb-6">
-                      {pkg.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start text-gray-300">
-                          <Check className="text-emerald-500 mr-3 mt-0.5 flex-shrink-0" size={16} />
-                          <span className="text-sm leading-relaxed">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="mt-auto">
-                    <Button 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        scrollToContact();
-                      }}
-                      className={`w-full py-3 px-6 rounded-md font-medium transition-all duration-200 active:scale-95 ${pkg.buttonColor} text-white hover:shadow-lg`}
-                    >
-                      {pkg.buttonText}
-                    </Button>
-                  </div>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Step 2: Support Packages */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-white mb-4">Step 2: Add Support Package (Optional)</h3>
-            <p className="text-gray-300 mb-2">All packages include 30 days of support. Choose ongoing support to continue after your launch period.</p>
-            <p className="text-indigo-400 font-medium">Paid support begins after your included 30-day period</p>
-          </div>
-
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {supportPackages.map((pkg, index) => {
-              const isSelected = selectedSupport === pkg.id;
-              
-              return (
-                <Card 
-                  key={index} 
-                  className={`bg-[#0F0F0F] border-gray-700 p-6 transition-all duration-300 hover:border-emerald-500 hover:shadow-lg flex flex-col h-full relative cursor-pointer
-                    ${pkg.recommended && !isSelected ? 'ring-2 ring-indigo-500' : ''}
-                    ${isSelected ? 'ring-2 ring-emerald-500 bg-emerald-950/20 border-emerald-500' : ''}
-                  `}
-                  onClick={() => handleSupportSelect(pkg.id)}
-                >
-                  {pkg.recommended && !isSelected && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                      <span className="bg-indigo-500 text-white px-3 py-1 rounded-full text-xs font-medium">
-                        Recommended
-                      </span>
-                    </div>
-                  )}
-                  
-                  <div className="text-center mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-indigo-500 rounded-lg flex items-center justify-center mx-auto mb-4">
-                      <pkg.icon className="text-white" size={24} />
-                    </div>
-                    <h4 className="text-lg font-bold text-white mb-2">{pkg.name}</h4>
-                    <div className="text-xl font-bold text-white">
-                      {pkg.price}
-                      <span className="text-sm text-gray-400 font-normal">{pkg.period}</span>
-                    </div>
-                    <p className="text-gray-400 text-sm mt-2">{pkg.description}</p>
-                  </div>
-
-                  <div className="flex-grow">
-                    <ul className="space-y-2">
-                      {pkg.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start text-gray-300">
-                          <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
-                          <span className="text-xs leading-relaxed">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Combined Information Section - Compact Design */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <Card className="bg-[#0F0F0F] border-emerald-500 p-8 shadow-xl">
-            <div className="grid lg:grid-cols-2 gap-8">
-              {/* Left Column - What Happens After Launch */}
-              <div>
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-white mb-3 flex items-center justify-center">
-                    <Clock className="text-indigo-500 mr-3" size={24} />
-                    What Happens After Your 30-Day Launch Period?
-                  </h3>
-                </div>
-                
-                <div className="space-y-4">
-                  <div className="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700">
-                    <h4 className="text-lg font-bold text-white mb-3 flex items-center">
-                      <Users className="text-indigo-500 mr-2" size={18} />
-                      Self-Managed Approach
-                    </h4>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex items-start">
-                        <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
-                        <span className="text-gray-300">Complete control over your automation systems</span>
-                      </div>
-                      <div className="flex items-start">
-                        <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
-                        <span className="text-gray-300">No ongoing monthly costs or commitments</span>
-                      </div>
-                      <div className="flex items-start">
-                        <span className="text-yellow-500 mr-2 mt-0.5">⚠</span>
-                        <span className="text-gray-400">Requires internal technical knowledge for maintenance</span>
-                      </div>
-                      <div className="flex items-start">
-                        <span className="text-yellow-500 mr-2 mt-0.5">⚠</span>
-                        <span className="text-gray-400">You handle troubleshooting and optimizations</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-[#1A1A1A] p-4 rounded-lg border border-emerald-500">
-                    <h4 className="text-lg font-bold text-white mb-3 flex items-center">
-                      <Headphones className="text-emerald-500 mr-2" size={18} />
-                      Supported Approach
-                    </h4>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex items-start">
-                        <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
-                        <span className="text-gray-300">Continuous expert support and optimization</span>
-                      </div>
-                      <div className="flex items-start">
-                        <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
-                        <span className="text-gray-300">Proactive monitoring and maintenance</span>
-                      </div>
-                      <div className="flex items-start">
-                        <span className="text-blue-500 mr-2 mt-0.5">💡</span>
-                        <span className="text-gray-400">Monthly investment for peace of mind</span>
-                      </div>
-                      <div className="flex items-start">
-                        <span className="text-blue-500 mr-2 mt-0.5">💡</span>
-                        <span className="text-gray-400">We handle all technical aspects for you</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Column - Why Choose Our Flexible Approach */}
-              <div>
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-white mb-3 flex items-center justify-center">
-                    <Shield className="text-emerald-500 mr-3" size={24} />
-                    Why Choose Our Flexible Approach
-                  </h3>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="grid grid-cols-1 gap-4">
-                    <div className="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700 text-center">
-                      <Users className="text-emerald-500 mx-auto mb-2" size={24} />
-                      <div className="text-white font-semibold mb-1">UK-Based Expert Team</div>
-                      <div className="text-gray-400 text-sm">Dedicated British support team with deep automation expertise and same-timezone availability</div>
-                    </div>
-                    
-                    <div className="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700 text-center">
-                      <Shield className="text-emerald-500 mx-auto mb-2" size={24} />
-                      <div className="text-white font-semibold mb-1">30-Day Risk-Free Guarantee</div>
-                      <div className="text-gray-400 text-sm">Complete satisfaction guarantee with full refund if systems don't deliver promised results</div>
-                    </div>
-                    
-                    <div className="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700 text-center">
-                      <Check className="text-emerald-500 mx-auto mb-2" size={24} />
-                      <div className="text-white font-semibold mb-1">No Long-Term Lock-ins</div>
-                      <div className="text-gray-400 text-sm">Flexible contracts, cancel support anytime, keep your automation systems forever</div>
-                    </div>
-                  </div>
-
-                  <div className="bg-gradient-to-r from-emerald-500/20 to-indigo-500/20 rounded-lg p-4 border border-emerald-500/30">
-                    <div className="text-center">
-                      <h4 className="text-white font-bold mb-2">Start with a Free Strategy Consultation</h4>
-                      <p className="text-gray-300 text-sm mb-3">No obligation consultation to discover your automation potential and discuss the best approach for your business</p>
-                      <div className="flex justify-center space-x-2 text-xs text-gray-400">
-                        <span>✓ Risk-free assessment</span>
-                        <span>✓ Tailored recommendations</span>
-                        <span>✓ Clear roadmap</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="text-center mt-8 pt-6 border-t border-gray-700">
-              <Button 
-                onClick={scrollToContact}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 text-lg font-semibold transition-all duration-300 hover:shadow-lg"
+          <h3 className="text-2xl font-bold text-white text-center mb-8">Automation Setup Packages</h3>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {packages.map((pkg) => (
+              <Card
+                key={pkg.id}
+                className={`relative cursor-pointer transition-all duration-300 bg-[#1A1A1A] border-gray-700 hover:border-emerald-500 ${
+                  selectedPackage === pkg.id 
+                    ? 'scale-105 border-emerald-500 shadow-2xl shadow-emerald-500/20' 
+                    : pkg.popular 
+                      ? 'scale-105 border-emerald-500 shadow-xl shadow-emerald-500/10' 
+                      : ''
+                }`}
+                onClick={() => setSelectedPackage(pkg.id)}
               >
-                Schedule Your Free Consultation
-              </Button>
+                {pkg.popular && selectedPackage !== pkg.id && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <div className="bg-emerald-500 text-white px-4 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                      <Star className="h-3 w-3" />
+                      Most Popular
+                    </div>
+                  </div>
+                )}
+                <CardHeader className="text-center pb-4">
+                  <CardTitle className="text-2xl font-bold text-white mb-2">{pkg.name}</CardTitle>
+                  <div className="text-3xl font-bold text-emerald-500 mb-2">{pkg.price}</div>
+                  <p className="text-gray-400 text-sm">{pkg.description}</p>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 mb-6">
+                    {pkg.features.map((feature, index) => (
+                      <li key={index} className="flex items-start gap-3 text-gray-300">
+                        <Check className="h-5 w-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white">
+                    Get Started
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Support Packages */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-bold text-white text-center mb-8">Ongoing Support Packages</h3>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {supportPackages.map((support) => (
+              <Card
+                key={support.id}
+                className={`cursor-pointer transition-all duration-300 bg-[#1A1A1A] border-gray-700 hover:border-indigo-500 ${
+                  selectedSupport === support.id 
+                    ? 'border-indigo-500 bg-indigo-500/5 shadow-lg shadow-indigo-500/20' 
+                    : ''
+                }`}
+                onClick={() => handleSupportSelection(support.id)}
+              >
+                <CardHeader className="text-center pb-4">
+                  <div className="flex justify-center mb-3 text-indigo-400">
+                    {support.icon}
+                  </div>
+                  <CardTitle className="text-xl font-bold text-white mb-2">{support.name}</CardTitle>
+                  <div className="text-2xl font-bold text-indigo-500 mb-2">{support.price}</div>
+                  <p className="text-gray-400 text-sm">{support.description}</p>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 mb-6">
+                    {support.features.map((feature, index) => (
+                      <li key={index} className="flex items-start gap-3 text-gray-300">
+                        <Check className="h-4 w-4 text-indigo-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button 
+                    variant={selectedSupport === support.id ? "default" : "outline"}
+                    className={selectedSupport === support.id 
+                      ? "w-full bg-indigo-600 hover:bg-indigo-700 text-white" 
+                      : "w-full border-indigo-500 text-indigo-400 hover:bg-indigo-500/10"
+                    }
+                  >
+                    {selectedSupport === support.id ? 'Selected' : 'Select Plan'}
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Post-Launch Information - Combined and Compact */}
+        <div className="bg-[#1A1A1A] rounded-xl p-8 border border-gray-700">
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* What Happens After 30 Days */}
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <Clock className="h-6 w-6 text-emerald-500" />
+                <h3 className="text-xl font-bold text-white">What Happens After 30 Days?</h3>
+              </div>
+              <div className="space-y-3 text-gray-300 text-sm">
+                <p><strong className="text-white">Your systems are live and running.</strong> The 30-day launch period ensures everything is properly configured, tested, and optimized for your business.</p>
+                <p><strong className="text-white">Choose your ongoing support level</strong> based on your needs. Our support packages ensure your automation continues to deliver results with proactive monitoring and optimization.</p>
+                <p><strong className="text-white">No long-term contracts.</strong> You can adjust or cancel your support package anytime with 30 days' notice.</p>
+              </div>
             </div>
-          </Card>
+
+            {/* Why Choose Our Flexible Approach */}
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <Zap className="h-6 w-6 text-indigo-500" />
+                <h3 className="text-xl font-bold text-white">Why Choose Our Flexible Approach?</h3>
+              </div>
+              <div className="space-y-3 text-gray-300 text-sm">
+                <p><strong className="text-white">Pay for what you need.</strong> Start with essential automation and scale up as your business grows. No over-investment in features you don't need yet.</p>
+                <p><strong className="text-white">Proven 30-day launch process.</strong> Our structured approach ensures successful deployment every time, with dedicated support throughout the critical launch phase.</p>
+                <p><strong className="text-white">Ongoing optimization.</strong> Technology and business needs evolve. Our support packages ensure your automation evolves with you, maintaining peak performance.</p>
+                <p><strong className="text-white">UK-based expertise.</strong> Work with automation specialists who understand UK businesses, regulations, and market dynamics.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

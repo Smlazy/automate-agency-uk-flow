@@ -64,11 +64,6 @@ const Footer = () => {
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollToSection('results')} className="hover:text-white transition-colors">
-                  Industry Insights
-                </button>
-              </li>
-              <li>
                 <Link to="/blog" className="hover:text-white transition-colors">
                   Blog & Insights
                 </Link>
@@ -110,15 +105,15 @@ const Footer = () => {
               © 2024 Vantive Digital. All rights reserved. • UK Company Registration: [Number] • VAT: [Number]
             </div>
             <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+              <Link to="/privacy-policy" className="text-gray-400 hover:text-white text-sm transition-colors">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+              </Link>
+              <Link to="/terms-of-service" className="text-gray-400 hover:text-white text-sm transition-colors">
                 Terms of Service
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+              </Link>
+              <Link to="/cookie-policy" className="text-gray-400 hover:text-white text-sm transition-colors">
                 Cookie Policy
-              </a>
+              </Link>
             </div>
           </div>
         </div>
