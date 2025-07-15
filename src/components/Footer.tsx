@@ -19,12 +19,12 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <Link to="/" className="text-2xl font-bold text-white mb-4 block">
-              V<span className="text-[#8B1538]">A</span>NTIVE D<span className="text-[#8B1538]">I</span>GITAL
+              V<span className="text-emerald-500">A</span>NTIVE D<span className="text-emerald-500">I</span>GITAL
             </Link>
             <p className="text-gray-300 text-sm mb-4">
               Specialised automation for growing UK businesses. Transform your operations with intelligent automation that delivers measurable results.
             </p>
-            <div className="text-[#8B1538] font-semibold text-sm">
+            <div className="text-emerald-500 font-semibold text-sm">
               Based in the UK • Serving businesses nationwide
             </div>
           </div>

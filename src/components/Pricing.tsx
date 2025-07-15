@@ -1,11 +1,16 @@
 
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Check, Star, Crown, Zap, Shield, Users, Clock, MessageSquare, Phone, Headphones } from 'lucide-react';
 
 const Pricing = () => {
+  const [selectedPackage, setSelectedPackage] = useState('growth');
+  const [selectedSupport, setSelectedSupport] = useState('basic');
+
   const setupPackages = [
     {
+      id: 'starter',
       name: "Starter Package",
       price: "£1,199",
       period: " one-time setup",
@@ -24,6 +29,7 @@ const Pricing = () => {
       buttonColor: "bg-indigo-600 hover:bg-indigo-700"
     },
     {
+      id: 'growth',
       name: "Growth Package",
       price: "£2,385",
       period: " one-time setup",
@@ -42,6 +48,7 @@ const Pricing = () => {
       buttonColor: "bg-emerald-600 hover:bg-emerald-700"
     },
     {
+      id: 'enterprise',
       name: "Enterprise Package",
       price: "Custom Quote",
       period: " tailored solution",
@@ -63,6 +70,7 @@ const Pricing = () => {
 
   const supportPackages = [
     {
+      id: 'none',
       name: "No Support",
       price: "£0",
       period: "/month",
@@ -76,6 +84,7 @@ const Pricing = () => {
       recommended: false
     },
     {
+      id: 'basic',
       name: "Basic Support",
       price: "£195",
       period: "/month",
@@ -90,6 +99,7 @@ const Pricing = () => {
       recommended: true
     },
     {
+      id: 'premium',
       name: "Premium Support",
       price: "£485",
       period: "/month",
@@ -104,6 +114,7 @@ const Pricing = () => {
       recommended: false
     },
     {
+      id: 'enterprise',
       name: "Enterprise Support",
       price: "£975",
       period: "/month",
@@ -122,6 +133,14 @@ const Pricing = () => {
   const scrollToContact = () => {
     const element = document.getElementById('contact');
     element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handlePackageSelect = (packageId: string) => {
+    setSelectedPackage(packageId);
+  };
+
+  const handleSupportSelect = (supportId: string) => {
+    setSelectedSupport(selectedSupport === supportId ? null : supportId);
   };
 
   return (
@@ -147,52 +166,69 @@ const Pricing = () => {
           </div>
 
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-            {setupPackages.map((pkg, index) => (
-              <Card key={index} className={`bg-[#0F0F0F] border-gray-700 p-8 transition-all duration-300 hover:border-emerald-500 hover:shadow-2xl hover:-translate-y-2 flex flex-col h-full relative ${pkg.popular ? 'ring-2 ring-emerald-500 shadow-xl scale-105' : 'shadow-lg'}`}>
-                {pkg.popular && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-emerald-500 text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                
-                <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${pkg.color} flex items-center justify-center mb-6 shadow-lg`}>
-                  <pkg.icon className="text-white" size={32} />
-                </div>
-
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-white mb-2">{pkg.name}</h3>
-                  <div className="mb-4">
-                    <div className="text-3xl font-bold text-white">
-                      {pkg.price}
-                      <span className="text-lg text-gray-400 font-normal">{pkg.period}</span>
+            {setupPackages.map((pkg, index) => {
+              const isSelected = selectedPackage === pkg.id;
+              const isGrowth = pkg.id === 'growth';
+              const shouldScale = isSelected && !isGrowth;
+              
+              return (
+                <Card 
+                  key={index} 
+                  className={`bg-[#0F0F0F] border-gray-700 p-8 transition-all duration-300 hover:border-emerald-500 hover:shadow-2xl hover:-translate-y-2 flex flex-col h-full relative cursor-pointer
+                    ${isSelected ? 'ring-2 ring-emerald-500 shadow-xl' : 'shadow-lg'}
+                    ${shouldScale ? 'scale-105' : ''}
+                    ${isGrowth && !isSelected ? '' : isGrowth ? 'scale-105' : ''}
+                  `}
+                  onClick={() => handlePackageSelect(pkg.id)}
+                >
+                  {(pkg.popular && (isSelected || pkg.id === 'growth')) && (
+                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                      <span className="bg-emerald-500 text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
+                        Most Popular
+                      </span>
                     </div>
+                  )}
+                  
+                  <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${pkg.color} flex items-center justify-center mb-6 shadow-lg`}>
+                    <pkg.icon className="text-white" size={32} />
                   </div>
-                  <p className="text-gray-300 font-medium leading-relaxed">{pkg.description}</p>
-                </div>
 
-                <div className="flex-grow">
-                  <ul className="space-y-3 mb-6">
-                    {pkg.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start text-gray-300">
-                        <Check className="text-emerald-500 mr-3 mt-0.5 flex-shrink-0" size={16} />
-                        <span className="text-sm leading-relaxed">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  <div className="text-center mb-6">
+                    <h3 className="text-2xl font-bold text-white mb-2">{pkg.name}</h3>
+                    <div className="mb-4">
+                      <div className="text-3xl font-bold text-white">
+                        {pkg.price}
+                        <span className="text-lg text-gray-400 font-normal">{pkg.period}</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-300 font-medium leading-relaxed">{pkg.description}</p>
+                  </div>
 
-                <div className="mt-auto">
-                  <Button 
-                    onClick={scrollToContact}
-                    className={`w-full py-3 px-6 rounded-md font-medium transition-all duration-200 active:scale-95 ${pkg.buttonColor} text-white hover:shadow-lg`}
-                  >
-                    {pkg.buttonText}
-                  </Button>
-                </div>
-              </Card>
-            ))}
+                  <div className="flex-grow">
+                    <ul className="space-y-3 mb-6">
+                      {pkg.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start text-gray-300">
+                          <Check className="text-emerald-500 mr-3 mt-0.5 flex-shrink-0" size={16} />
+                          <span className="text-sm leading-relaxed">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mt-auto">
+                    <Button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        scrollToContact();
+                      }}
+                      className={`w-full py-3 px-6 rounded-md font-medium transition-all duration-200 active:scale-95 ${pkg.buttonColor} text-white hover:shadow-lg`}
+                    >
+                      {pkg.buttonText}
+                    </Button>
+                  </div>
+                </Card>
+              );
+            })}
           </div>
         </div>
 
@@ -205,102 +241,88 @@ const Pricing = () => {
           </div>
 
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {supportPackages.map((pkg, index) => (
-              <Card key={index} className={`bg-[#0F0F0F] border-gray-700 p-6 transition-all duration-300 hover:border-emerald-500 hover:shadow-lg flex flex-col h-full relative ${pkg.recommended ? 'ring-2 ring-indigo-500' : ''}`}>
-                {pkg.recommended && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-indigo-500 text-white px-3 py-1 rounded-full text-xs font-medium">
-                      Recommended
-                    </span>
+            {supportPackages.map((pkg, index) => {
+              const isSelected = selectedSupport === pkg.id;
+              
+              return (
+                <Card 
+                  key={index} 
+                  className={`bg-[#0F0F0F] border-gray-700 p-6 transition-all duration-300 hover:border-emerald-500 hover:shadow-lg flex flex-col h-full relative cursor-pointer
+                    ${pkg.recommended && !isSelected ? 'ring-2 ring-indigo-500' : ''}
+                    ${isSelected ? 'ring-2 ring-emerald-500 bg-emerald-950/20' : ''}
+                  `}
+                  onClick={() => handleSupportSelect(pkg.id)}
+                >
+                  {pkg.recommended && !isSelected && (
+                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                      <span className="bg-indigo-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                        Recommended
+                      </span>
+                    </div>
+                  )}
+                  
+                  <div className="text-center mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-indigo-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                      <pkg.icon className="text-white" size={24} />
+                    </div>
+                    <h4 className="text-lg font-bold text-white mb-2">{pkg.name}</h4>
+                    <div className="text-xl font-bold text-white">
+                      {pkg.price}
+                      <span className="text-sm text-gray-400 font-normal">{pkg.period}</span>
+                    </div>
+                    <p className="text-gray-400 text-sm mt-2">{pkg.description}</p>
                   </div>
-                )}
-                
-                <div className="text-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-indigo-500 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <pkg.icon className="text-white" size={24} />
-                  </div>
-                  <h4 className="text-lg font-bold text-white mb-2">{pkg.name}</h4>
-                  <div className="text-xl font-bold text-white">
-                    {pkg.price}
-                    <span className="text-sm text-gray-400 font-normal">{pkg.period}</span>
-                  </div>
-                  <p className="text-gray-400 text-sm mt-2">{pkg.description}</p>
-                </div>
 
-                <div className="flex-grow">
-                  <ul className="space-y-2">
-                    {pkg.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start text-gray-300">
-                        <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
-                        <span className="text-xs leading-relaxed">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Card>
-            ))}
+                  <div className="flex-grow">
+                    <ul className="space-y-2">
+                      {pkg.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start text-gray-300">
+                          <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
+                          <span className="text-xs leading-relaxed">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Card>
+              );
+            })}
           </div>
         </div>
 
-        {/* What Happens After Launch Section */}
+        {/* Compact What Happens After Launch Section */}
         <div className="max-w-4xl mx-auto mb-16">
-          <Card className="bg-[#0F0F0F] border-emerald-500 p-8 shadow-xl">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-white mb-4">What Happens After Your 30-Day Launch Period?</h3>
-              <p className="text-gray-300">Compare your options for ongoing automation management</p>
+          <Card className="bg-[#0F0F0F] border-emerald-500 p-6 shadow-xl">
+            <div className="text-center mb-6">
+              <h3 className="text-xl font-bold text-white mb-2">What Happens After Your 30-Day Launch Period?</h3>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-[#1A1A1A] p-6 rounded-lg border border-gray-700">
-                <h4 className="text-lg font-bold text-white mb-4 flex items-center">
-                  <Clock className="text-indigo-500 mr-2" size={20} />
-                  Self-Managed Operation
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div className="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700">
+                <h4 className="text-base font-bold text-white mb-3 flex items-center">
+                  <Clock className="text-indigo-500 mr-2" size={18} />
+                  Self-Managed
                 </h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-2 text-sm">
                   <div className="flex items-start">
-                    <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
-                    <span className="text-gray-300">Complete control over your systems</span>
-                  </div>
-                  <div className="flex items-start">
-                    <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
-                    <span className="text-gray-300">No ongoing monthly costs</span>
-                  </div>
-                  <div className="flex items-start">
-                    <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
-                    <span className="text-gray-300">Comprehensive documentation provided</span>
+                    <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={12} />
+                    <span className="text-gray-300">Complete control, no monthly costs</span>
                   </div>
                   <div className="flex items-start">
                     <span className="text-yellow-500 mr-2 mt-0.5">⚠</span>
                     <span className="text-gray-400">Requires internal technical knowledge</span>
                   </div>
-                  <div className="flex items-start">
-                    <span className="text-yellow-500 mr-2 mt-0.5">⚠</span>
-                    <span className="text-gray-400">Time investment for maintenance and updates</span>
-                  </div>
                 </div>
               </div>
 
-              <div className="bg-[#1A1A1A] p-6 rounded-lg border border-emerald-500">
-                <h4 className="text-lg font-bold text-white mb-4 flex items-center">
-                  <Headphones className="text-emerald-500 mr-2" size={20} />
-                  Supported Operation
+              <div className="bg-[#1A1A1A] p-4 rounded-lg border border-emerald-500">
+                <h4 className="text-base font-bold text-white mb-3 flex items-center">
+                  <Headphones className="text-emerald-500 mr-2" size={18} />
+                  Supported
                 </h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-2 text-sm">
                   <div className="flex items-start">
-                    <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
-                    <span className="text-gray-300">Proactive monitoring and maintenance</span>
-                  </div>
-                  <div className="flex items-start">
-                    <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
-                    <span className="text-gray-300">Regular optimization and improvements</span>
-                  </div>
-                  <div className="flex items-start">
-                    <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
-                    <span className="text-gray-300">Expert support when you need it</span>
-                  </div>
-                  <div className="flex items-start">
-                    <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
-                    <span className="text-gray-300">Focus on your business, not technical details</span>
+                    <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={12} />
+                    <span className="text-gray-300">Expert support and optimization</span>
                   </div>
                   <div className="flex items-start">
                     <span className="text-blue-500 mr-2 mt-0.5">💡</span>
@@ -310,10 +332,10 @@ const Pricing = () => {
               </div>
             </div>
 
-            <div className="text-center mt-8">
+            <div className="text-center">
               <Button 
                 onClick={scrollToContact}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 font-semibold text-lg transition-all duration-300 hover:shadow-lg"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 font-semibold transition-all duration-300 hover:shadow-lg"
               >
                 Schedule Your Free Consultation
               </Button>
@@ -321,36 +343,36 @@ const Pricing = () => {
           </Card>
         </div>
 
-        {/* Trust Signals */}
+        {/* Trust Signals - Compact Version */}
         <div className="max-w-4xl mx-auto">
-          <Card className="bg-[#0F0F0F] border-gray-700 p-8 shadow-xl">
+          <Card className="bg-[#0F0F0F] border-gray-700 p-6 shadow-xl">
             <div className="text-center">
-              <div className="flex justify-center items-center mb-6">
-                <Shield className="text-emerald-500 mr-3" size={32} />
-                <h3 className="text-2xl font-bold text-white">Why Choose Our Flexible Approach</h3>
+              <div className="flex justify-center items-center mb-4">
+                <Shield className="text-emerald-500 mr-3" size={24} />
+                <h3 className="text-xl font-bold text-white">Why Choose Our Flexible Approach</h3>
               </div>
               
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="grid md:grid-cols-3 gap-4 mb-6">
                 <div className="text-center">
-                  <Users className="text-emerald-500 mx-auto mb-3" size={24} />
-                  <div className="text-white font-semibold mb-2">UK-Based Support Team</div>
-                  <div className="text-gray-400 text-sm">Dedicated British support specialists</div>
+                  <Users className="text-emerald-500 mx-auto mb-2" size={20} />
+                  <div className="text-white font-semibold text-sm mb-1">UK-Based Team</div>
+                  <div className="text-gray-400 text-xs">Dedicated British support</div>
                 </div>
                 <div className="text-center">
-                  <Shield className="text-emerald-500 mx-auto mb-3" size={24} />
-                  <div className="text-white font-semibold mb-2">30-Day Money-Back Guarantee</div>
-                  <div className="text-gray-400 text-sm">Risk-free investment in your automation</div>
+                  <Shield className="text-emerald-500 mx-auto mb-2" size={20} />
+                  <div className="text-white font-semibold text-sm mb-1">30-Day Guarantee</div>
+                  <div className="text-gray-400 text-xs">Risk-free investment</div>
                 </div>
                 <div className="text-center">
-                  <Check className="text-emerald-500 mx-auto mb-3" size={24} />
-                  <div className="text-white font-semibold mb-2">No Long-Term Lock-ins</div>
-                  <div className="text-gray-400 text-sm">Cancel support anytime with 30 days notice</div>
+                  <Check className="text-emerald-500 mx-auto mb-2" size={20} />
+                  <div className="text-white font-semibold text-sm mb-1">No Lock-ins</div>
+                  <div className="text-gray-400 text-xs">Cancel anytime</div>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-emerald-500/10 to-indigo-500/10 rounded-lg p-6">
-                <p className="text-white text-lg font-semibold mb-2">Start with a free consultation to determine the best approach for your business</p>
-                <p className="text-gray-300">No obligation - discover your automation potential risk-free</p>
+              <div className="bg-gradient-to-r from-emerald-500/10 to-indigo-500/10 rounded-lg p-4">
+                <p className="text-white font-semibold mb-1">Start with a free consultation</p>
+                <p className="text-gray-300 text-sm">No obligation - discover your automation potential risk-free</p>
               </div>
             </div>
           </Card>

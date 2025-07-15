@@ -54,9 +54,9 @@ const NetworkBackground = () => {
 
         // Draw node
         ctx.fillStyle = node.color;
-        ctx.globalAlpha = 0.4;
+        ctx.globalAlpha = 0.6; // Increased from 0.4 to make more visible
         ctx.beginPath();
-        ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
+        ctx.arc(node.x, node.y, 3, 0, Math.PI * 2); // Increased size from 2 to 3
         ctx.fill();
 
         // Draw connections
@@ -66,10 +66,10 @@ const NetworkBackground = () => {
             const dy = node.y - otherNode.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
 
-            if (distance < 100) {
+            if (distance < 120) { // Increased connection distance from 100 to 120
               ctx.strokeStyle = node.color;
-              ctx.globalAlpha = (100 - distance) / 100 * 0.2;
-              ctx.lineWidth = 1;
+              ctx.globalAlpha = (120 - distance) / 120 * 0.3; // Increased from 0.2 to 0.3
+              ctx.lineWidth = 1.5; // Increased from 1 to 1.5
               ctx.beginPath();
               ctx.moveTo(node.x, node.y);
               ctx.lineTo(otherNode.x, otherNode.y);
@@ -92,7 +92,7 @@ const NetworkBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full opacity-25"
+      className="absolute inset-0 w-full h-full opacity-40" // Increased from opacity-25 to opacity-40
       style={{ pointerEvents: 'none' }}
     />
   );
