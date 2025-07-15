@@ -42,13 +42,6 @@ const Header = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-200 group-hover:w-full"></span>
             </button>
             <button 
-              onClick={() => scrollToSection('results')}
-              className="text-[#C0C0C0] hover:text-white transition-colors duration-200 font-medium relative group"
-            >
-              Results
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-200 group-hover:w-full"></span>
-            </button>
-            <button 
               onClick={() => scrollToSection('pricing')}
               className="text-[#C0C0C0] hover:text-white transition-colors duration-200 font-medium relative group"
             >
@@ -113,12 +106,6 @@ const Header = () => {
                   className="text-[#C0C0C0] hover:text-white transition-colors duration-200 font-medium py-2 border-l-2 border-transparent hover:border-emerald-500 pl-4 hover:pl-6 transition-all text-left" 
                 >
                   Process
-                </button>
-                <button 
-                  onClick={() => scrollToSection('results')}
-                  className="text-[#C0C0C0] hover:text-white transition-colors duration-200 font-medium py-2 border-l-2 border-transparent hover:border-emerald-500 pl-4 hover:pl-6 transition-all text-left" 
-                >
-                  Results
                 </button>
                 <button 
                   onClick={() => scrollToSection('pricing')}

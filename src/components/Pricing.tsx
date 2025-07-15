@@ -249,7 +249,7 @@ const Pricing = () => {
                   key={index} 
                   className={`bg-[#0F0F0F] border-gray-700 p-6 transition-all duration-300 hover:border-emerald-500 hover:shadow-lg flex flex-col h-full relative cursor-pointer
                     ${pkg.recommended && !isSelected ? 'ring-2 ring-indigo-500' : ''}
-                    ${isSelected ? 'ring-2 ring-emerald-500 bg-emerald-950/20' : ''}
+                    ${isSelected ? 'ring-2 ring-emerald-500 bg-emerald-950/20 border-emerald-500' : ''}
                   `}
                   onClick={() => handleSupportSelect(pkg.id)}
                 >
@@ -289,91 +289,124 @@ const Pricing = () => {
           </div>
         </div>
 
-        {/* Compact What Happens After Launch Section */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <Card className="bg-[#0F0F0F] border-emerald-500 p-6 shadow-xl">
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-bold text-white mb-2">What Happens After Your 30-Day Launch Period?</h3>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <div className="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700">
-                <h4 className="text-base font-bold text-white mb-3 flex items-center">
-                  <Clock className="text-indigo-500 mr-2" size={18} />
-                  Self-Managed
-                </h4>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-start">
-                    <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={12} />
-                    <span className="text-gray-300">Complete control, no monthly costs</span>
+        {/* Combined Information Section - Compact Design */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <Card className="bg-[#0F0F0F] border-emerald-500 p-8 shadow-xl">
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Left Column - What Happens After Launch */}
+              <div>
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-bold text-white mb-3 flex items-center justify-center">
+                    <Clock className="text-indigo-500 mr-3" size={24} />
+                    What Happens After Your 30-Day Launch Period?
+                  </h3>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700">
+                    <h4 className="text-lg font-bold text-white mb-3 flex items-center">
+                      <Users className="text-indigo-500 mr-2" size={18} />
+                      Self-Managed Approach
+                    </h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
+                        <span className="text-gray-300">Complete control over your automation systems</span>
+                      </div>
+                      <div className="flex items-start">
+                        <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
+                        <span className="text-gray-300">No ongoing monthly costs or commitments</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="text-yellow-500 mr-2 mt-0.5">⚠</span>
+                        <span className="text-gray-400">Requires internal technical knowledge for maintenance</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="text-yellow-500 mr-2 mt-0.5">⚠</span>
+                        <span className="text-gray-400">You handle troubleshooting and optimizations</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex items-start">
-                    <span className="text-yellow-500 mr-2 mt-0.5">⚠</span>
-                    <span className="text-gray-400">Requires internal technical knowledge</span>
+
+                  <div className="bg-[#1A1A1A] p-4 rounded-lg border border-emerald-500">
+                    <h4 className="text-lg font-bold text-white mb-3 flex items-center">
+                      <Headphones className="text-emerald-500 mr-2" size={18} />
+                      Supported Approach
+                    </h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
+                        <span className="text-gray-300">Continuous expert support and optimization</span>
+                      </div>
+                      <div className="flex items-start">
+                        <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={14} />
+                        <span className="text-gray-300">Proactive monitoring and maintenance</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="text-blue-500 mr-2 mt-0.5">💡</span>
+                        <span className="text-gray-400">Monthly investment for peace of mind</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="text-blue-500 mr-2 mt-0.5">💡</span>
+                        <span className="text-gray-400">We handle all technical aspects for you</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-[#1A1A1A] p-4 rounded-lg border border-emerald-500">
-                <h4 className="text-base font-bold text-white mb-3 flex items-center">
-                  <Headphones className="text-emerald-500 mr-2" size={18} />
-                  Supported
-                </h4>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-start">
-                    <Check className="text-emerald-500 mr-2 mt-0.5 flex-shrink-0" size={12} />
-                    <span className="text-gray-300">Expert support and optimization</span>
+              {/* Right Column - Why Choose Our Flexible Approach */}
+              <div>
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-bold text-white mb-3 flex items-center justify-center">
+                    <Shield className="text-emerald-500 mr-3" size={24} />
+                    Why Choose Our Flexible Approach
+                  </h3>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 gap-4">
+                    <div className="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700 text-center">
+                      <Users className="text-emerald-500 mx-auto mb-2" size={24} />
+                      <div className="text-white font-semibold mb-1">UK-Based Expert Team</div>
+                      <div className="text-gray-400 text-sm">Dedicated British support team with deep automation expertise and same-timezone availability</div>
+                    </div>
+                    
+                    <div className="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700 text-center">
+                      <Shield className="text-emerald-500 mx-auto mb-2" size={24} />
+                      <div className="text-white font-semibold mb-1">30-Day Risk-Free Guarantee</div>
+                      <div className="text-gray-400 text-sm">Complete satisfaction guarantee with full refund if systems don't deliver promised results</div>
+                    </div>
+                    
+                    <div className="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700 text-center">
+                      <Check className="text-emerald-500 mx-auto mb-2" size={24} />
+                      <div className="text-white font-semibold mb-1">No Long-Term Lock-ins</div>
+                      <div className="text-gray-400 text-sm">Flexible contracts, cancel support anytime, keep your automation systems forever</div>
+                    </div>
                   </div>
-                  <div className="flex items-start">
-                    <span className="text-blue-500 mr-2 mt-0.5">💡</span>
-                    <span className="text-gray-400">Monthly investment for peace of mind</span>
+
+                  <div className="bg-gradient-to-r from-emerald-500/20 to-indigo-500/20 rounded-lg p-4 border border-emerald-500/30">
+                    <div className="text-center">
+                      <h4 className="text-white font-bold mb-2">Start with a Free Strategy Consultation</h4>
+                      <p className="text-gray-300 text-sm mb-3">No obligation consultation to discover your automation potential and discuss the best approach for your business</p>
+                      <div className="flex justify-center space-x-2 text-xs text-gray-400">
+                        <span>✓ Risk-free assessment</span>
+                        <span>✓ Tailored recommendations</span>
+                        <span>✓ Clear roadmap</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="text-center">
+            <div className="text-center mt-8 pt-6 border-t border-gray-700">
               <Button 
                 onClick={scrollToContact}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 font-semibold transition-all duration-300 hover:shadow-lg"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 text-lg font-semibold transition-all duration-300 hover:shadow-lg"
               >
                 Schedule Your Free Consultation
               </Button>
-            </div>
-          </Card>
-        </div>
-
-        {/* Trust Signals - Compact Version */}
-        <div className="max-w-4xl mx-auto">
-          <Card className="bg-[#0F0F0F] border-gray-700 p-6 shadow-xl">
-            <div className="text-center">
-              <div className="flex justify-center items-center mb-4">
-                <Shield className="text-emerald-500 mr-3" size={24} />
-                <h3 className="text-xl font-bold text-white">Why Choose Our Flexible Approach</h3>
-              </div>
-              
-              <div className="grid md:grid-cols-3 gap-4 mb-6">
-                <div className="text-center">
-                  <Users className="text-emerald-500 mx-auto mb-2" size={20} />
-                  <div className="text-white font-semibold text-sm mb-1">UK-Based Team</div>
-                  <div className="text-gray-400 text-xs">Dedicated British support</div>
-                </div>
-                <div className="text-center">
-                  <Shield className="text-emerald-500 mx-auto mb-2" size={20} />
-                  <div className="text-white font-semibold text-sm mb-1">30-Day Guarantee</div>
-                  <div className="text-gray-400 text-xs">Risk-free investment</div>
-                </div>
-                <div className="text-center">
-                  <Check className="text-emerald-500 mx-auto mb-2" size={20} />
-                  <div className="text-white font-semibold text-sm mb-1">No Lock-ins</div>
-                  <div className="text-gray-400 text-xs">Cancel anytime</div>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-r from-emerald-500/10 to-indigo-500/10 rounded-lg p-4">
-                <p className="text-white font-semibold mb-1">Start with a free consultation</p>
-                <p className="text-gray-300 text-sm">No obligation - discover your automation potential risk-free</p>
-              </div>
             </div>
           </Card>
         </div>
