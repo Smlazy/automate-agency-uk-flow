@@ -1,23 +1,30 @@
 
 import { AuthGuard } from '@/components/auth/AuthGuard';
 import { UserProfileForm } from '@/components/profile/UserProfileForm';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import NetworkBackground from '@/components/NetworkBackground';
+import { useUserProfile } from '@/hooks/useUserProfile';
+import { Loader2 } from 'lucide-react';
+import TechBackground from '@/components/TechBackground';
 
 export default function Profile() {
+  const { profile, loading, updateProfile } = useUserProfile();
+
+  if (loading) {
+    return (
+      <AuthGuard>
+        <div className="min-h-screen flex items-center justify-center">
+          <Loader2 className="h-8 w-8 animate-spin" />
+        </div>
+      </AuthGuard>
+    );
+  }
+
   return (
     <AuthGuard>
-      <div className="relative min-h-screen bg-[#0F0F0F]">
-        <NetworkBackground />
-        <Header />
-        <div className="container mx-auto px-4 py-24">
-          <div className="max-w-2xl mx-auto">
-            <h1 className="text-4xl font-bold text-white mb-8">Profile Settings</h1>
-            <UserProfileForm />
-          </div>
+      <TechBackground />
+      <div className="min-h-screen py-12 px-4">
+        <div className="container mx-auto">
+          <UserProfileForm profile={profile} onProfileUpdate={updateProfile} />
         </div>
-        <Footer />
       </div>
     </AuthGuard>
   );

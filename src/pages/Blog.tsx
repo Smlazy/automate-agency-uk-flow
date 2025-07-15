@@ -73,7 +73,7 @@ const Blog = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post) => (
-              <Card key={post.id} className="bg-[#1A1A1A] border-gray-700 hover:border-emerald-500 transition-colors group">
+              <Card key={post.id} className="bg-[#1A1A1A] border-gray-700 hover:border-[#8B1538] transition-colors group">
                 <div className="aspect-video overflow-hidden rounded-t-lg">
                   <img 
                     src={post.image} 
@@ -96,7 +96,7 @@ const Blog = () => {
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-bold text-white group-hover:text-emerald-500 transition-colors line-clamp-2">
+                  <h3 className="text-xl font-bold text-white group-hover:text-[#8B1538] transition-colors line-clamp-2">
                     {post.title}
                   </h3>
                 </CardHeader>
@@ -111,7 +111,7 @@ const Blog = () => {
                       <User size={12} />
                       <span>{post.author}</span>
                     </div>
-                    <span className="text-xs bg-emerald-600 text-white px-2 py-1 rounded">
+                    <span className="text-xs bg-[#8B1538] text-white px-2 py-1 rounded">
                       {post.category}
                     </span>
                   </div>
@@ -126,7 +126,7 @@ const Blog = () => {
                   </div>
                   
                   <Link to={`/blog/${post.slug}`}>
-                    <Button className="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white">
+                    <Button className="w-full mt-4 bg-[#8B1538] hover:bg-[#7A1230] text-white">
                       Read Article
                     </Button>
                   </Link>
@@ -143,7 +143,7 @@ const Blog = () => {
                   setSearchTerm('');
                   setSelectedCategory('');
                 }}
-                className="mt-4 bg-emerald-600 hover:bg-emerald-700 text-white"
+                className="mt-4 bg-[#8B1538] hover:bg-[#7A1230] text-white"
               >
                 Clear Filters
               </Button>
