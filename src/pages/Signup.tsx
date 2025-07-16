@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -10,7 +9,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { Loader2, Mail, User, Building } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import NetworkBackground from '@/components/NetworkBackground';
-import { toast } from '@/components/ui/use-toast';
+import { toast } from '@/hooks/use-toast';
 
 export default function Signup() {
   const { signUp } = useAuth();
@@ -30,6 +29,10 @@ export default function Signup() {
       ...prev,
       [e.target.name]: e.target.value
     }));
+  };
+
+  const handleTermsChange = (checked: boolean | 'indeterminate') => {
+    setAcceptedTerms(checked === true);
   };
 
   const handleSignUp = async (e: React.FormEvent) => {
@@ -176,7 +179,7 @@ export default function Signup() {
               <Checkbox 
                 id="terms" 
                 checked={acceptedTerms}
-                onCheckedChange={setAcceptedTerms}
+                onCheckedChange={handleTermsChange}
                 className="border-white/20 text-emerald-500"
               />
               <Label htmlFor="terms" className="text-sm text-gray-300">

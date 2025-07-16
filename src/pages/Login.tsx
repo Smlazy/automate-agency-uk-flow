@@ -40,6 +40,10 @@ export default function Login() {
     setLoading(false);
   };
 
+  const handleRememberMeChange = (checked: boolean | 'indeterminate') => {
+    setRememberMe(checked === true);
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted/20 p-4 relative overflow-hidden">
       <NetworkBackground />
@@ -93,7 +97,7 @@ export default function Login() {
                 <Checkbox 
                   id="remember" 
                   checked={rememberMe}
-                  onCheckedChange={setRememberMe}
+                  onCheckedChange={handleRememberMeChange}
                   className="border-white/20 text-emerald-500"
                 />
                 <Label htmlFor="remember" className="text-sm text-gray-300">
