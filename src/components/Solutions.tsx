@@ -1,127 +1,85 @@
 
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Monitor, Users, Wrench } from 'lucide-react';
+import { Card, CardContent } from "@/components/ui/card";
+import { Zap, Workflow, BarChart3, Users, MessageSquare, Calendar } from "lucide-react";
+import SectionBackground from '@/components/SectionBackground';
 
 const Solutions = () => {
-  const niches = [
+  const solutions = [
     {
-      icon: Monitor,
-      title: "SAAS",
-      subtitle: "Software as a Service Companies",
-      description: "Streamline user onboarding, boost feature adoption, and reduce churn with intelligent automation workflows designed for software companies.",
-      results: [
-        "80% reduction in manual onboarding time while improving user activation rates by 35%",
-        "Intelligent ticket routing and automated response systems",
-        "Automated reporting dashboards and performance tracking",
-        "Smart trial management and strategic upgrade prompting"
-      ],
-      color: "from-emerald-600 to-emerald-800"
+      icon: Workflow,
+      title: "Workflow Automation",
+      description: "Streamline repetitive tasks and create seamless workflows that operate 24/7 without human intervention.",
+      features: ["Task scheduling", "Data processing", "File management", "Report generation"]
+    },
+    {
+      icon: MessageSquare,
+      title: "Communication Automation", 
+      description: "Automate customer communications, follow-ups, and internal notifications across all your channels.",
+      features: ["Email sequences", "SMS campaigns", "Slack integration", "Customer support"]
+    },
+    {
+      icon: BarChart3,
+      title: "Data & Analytics",
+      description: "Transform raw data into actionable insights with automated reporting and real-time dashboards.",
+      features: ["Real-time dashboards", "Automated reports", "Data synchronization", "Performance tracking"]
     },
     {
       icon: Users,
-      title: "Agencies", 
-      subtitle: "Including Real Estate, Marketing & Recruitment",
-      description: "Automate client communication, project coordination, and performance reporting to scale your agency operations without hiring additional staff.",
-      results: [
-        "70% reduction in client reporting time and improved project delivery consistency by 45%",
-        "Automated communication workflows and milestone tracking",
-        "Real-time client dashboards and automated report generation",
-        "Smart qualification systems and conversion optimization"
-      ],
-      color: "from-indigo-600 to-indigo-800"
+      title: "CRM Integration",
+      description: "Connect and synchronize your customer data across all platforms for a unified business view.",
+      features: ["Lead management", "Customer tracking", "Sales automation", "Pipeline optimization"]
     },
     {
-      icon: Wrench,
-      title: "Service Professionals",
-      subtitle: "Plumbers, Electricians & Trade Specialists", 
-      description: "Automate appointment booking, customer follow-ups, and invoice processing to focus on what you do best while growing your business.",
-      results: [
-        "85% reduction in no-shows and 60% faster payment collection",
-        "Automated booking confirmations and customer reminder sequences",
-        "Streamlined invoicing and automated payment reminders",
-        "Digital documentation workflows and quality control systems"
-      ],
-      color: "from-purple-600 to-purple-800"
+      icon: Calendar,
+      title: "Scheduling & Booking",
+      description: "Automate appointment scheduling, calendar management, and booking confirmations.",
+      features: ["Calendar sync", "Automated reminders", "Booking forms", "Resource management"]
+    },
+    {
+      icon: Zap,
+      title: "Custom Integrations",
+      description: "Build bespoke connections between your tools and create custom automation solutions.",
+      features: ["API integrations", "Custom workflows", "Third-party connections", "Scalable solutions"]
     }
   ];
 
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    element?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <section id="solutions" className="py-20 bg-[#1A1A1A]">
+    <SectionBackground id="solutions" className="py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Tailored Automation Solutions for Your Industry
+            Automation Solutions That Drive Results
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            We specialise in the unique workflows and challenges of three high-growth industries
+            From simple task automation to complex business process optimization, we deliver solutions that transform how you work.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {niches.map((niche, index) => (
-            <Card key={index} className="bg-[#0F0F0F] border-gray-700 p-8 hover:border-emerald-500 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20 flex flex-col h-full">
-              <div className={`w-20 h-20 rounded-lg bg-gradient-to-r ${niche.color} flex items-center justify-center mb-6 shadow-lg`}>
-                <niche.icon className="text-white" size={48} />
-              </div>
-              
-              {/* Content Section - Grows to fill space */}
-              <div className="flex-grow">
-                <h3 className="text-2xl font-bold text-white mb-2">{niche.title}</h3>
-                {niche.subtitle && (
-                  <p className="text-indigo-400 text-sm mb-4 font-medium min-h-[40px] flex items-center">{niche.subtitle}</p>
-                )}
-                <p className="text-gray-300 mb-6 leading-relaxed">{niche.description}</p>
-
-                {/* Results Section - Consistent Height */}
-                <div className="mb-6">
-                  <h4 className="text-white font-semibold mb-3">Typical Results:</h4>
-                  <div className="space-y-2 min-h-[120px] flex flex-col justify-start">
-                    {niche.results.map((result, idx) => (
-                      <div key={idx} className="flex items-start text-gray-300 text-sm">
-                        <span className="w-2 h-2 bg-emerald-500 rounded-full mt-1.5 mr-3 flex-shrink-0"></span>
-                        <span className="leading-relaxed">{result}</span>
-                      </div>
-                    ))}
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {solutions.map((solution, index) => (
+            <Card key={index} className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/20 group">
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <solution.icon className="text-white" size={32} />
                 </div>
-              </div>
-
-              {/* Button Section - Always at bottom */}
-              <div className="mt-auto">
-                <Button 
-                  onClick={scrollToContact}
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-6 font-medium transition-all duration-200 hover:shadow-lg active:scale-95"
-                >
-                  Learn More
-                </Button>
-              </div>
+                
+                <h3 className="text-2xl font-bold text-white mb-4">{solution.title}</h3>
+                <p className="text-gray-300 mb-6 leading-relaxed">{solution.description}</p>
+                
+                <ul className="space-y-2">
+                  {solution.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center text-gray-400">
+                      <div className="w-2 h-2 bg-emerald-500 rounded-full mr-3 flex-shrink-0"></div>
+                      <span className="text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
             </Card>
           ))}
         </div>
-
-        <div className="text-center max-w-4xl mx-auto">
-          <div className="bg-[#0F0F0F] p-8 rounded-xl border border-gray-700">
-            <h3 className="text-2xl font-bold text-white mb-4">Don't See Your Industry?</h3>
-            <p className="text-gray-300 mb-6">
-              We've successfully automated workflows for dozens of other business types. 
-              Our process works for any business with repetitive tasks and growth ambitions.
-            </p>
-            <Button 
-              onClick={scrollToContact}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3"
-            >
-              Schedule Your Free Consultation
-            </Button>
-          </div>
-        </div>
       </div>
-    </section>
+    </SectionBackground>
   );
 };
 

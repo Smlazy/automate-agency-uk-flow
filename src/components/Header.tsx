@@ -20,6 +20,22 @@ const Header = () => {
     <header className="bg-[#0F0F0F] border-b border-[#1A1A1A] sticky top-0 z-50 backdrop-blur-sm">
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
+          {/* Mobile hamburger menu - moved to LEFT side */}
+          <div className="flex items-center md:hidden">
+            <Button 
+              variant="ghost" 
+              size="icon"
+              className="text-[#C0C0C0] hover:text-white hover:bg-[#1A1A1A] transition-colors duration-200 mr-4 p-3"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? (
+                <X className="h-7 w-7 transition-transform duration-300 rotate-180" />
+              ) : (
+                <Menu className="h-7 w-7 transition-transform duration-300" />
+              )}
+            </Button>
+          </div>
+
           <div className="flex items-center">
             <Link to="/" className="text-2xl font-bold text-white tracking-tight hover:opacity-90 transition-opacity duration-200">
               V<span className="text-emerald-500">A</span>NT<span className="text-emerald-500">I</span>VE DIGITAL
@@ -61,89 +77,103 @@ const Header = () => {
             </button>
           </nav>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             {user ? (
               <UserMenu />
             ) : (
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-2 md:space-x-3">
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 rounded-md font-medium transition-all duration-200 hover:shadow-lg hover:shadow-emerald-600/20 transform hover:scale-105"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 md:px-6 md:py-2.5 rounded-md font-medium transition-all duration-200 hover:shadow-lg hover:shadow-emerald-600/20 transform hover:scale-105 text-sm md:text-base"
                 >
                   Book Free Consultation
                 </button>
                 <Link to="/auth">
-                  <Button className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-md font-medium transition-all duration-200 hover:shadow-lg hover:shadow-indigo-600/20 transform hover:scale-105">
+                  <Button className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 md:px-6 md:py-2.5 rounded-md font-medium transition-all duration-200 hover:shadow-lg hover:shadow-indigo-600/20 transform hover:scale-105 text-sm md:text-base">
                     Sign In
                   </Button>
                 </Link>
               </div>
             )}
-            
-            <Button 
-              variant="ghost" 
-              size="icon"
-              className="md:hidden text-[#C0C0C0] hover:text-white hover:bg-[#1A1A1A] transition-colors duration-200"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
           </div>
         </div>
 
+        {/* Mobile menu overlay and drawer */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-[#0F0F0F] border-b border-[#1A1A1A] shadow-xl">
-            <div className="container mx-auto px-6 py-4">
-              <nav className="flex flex-col space-y-4">
-                <button 
-                  onClick={() => scrollToSection('solutions')}
-                  className="text-[#C0C0C0] hover:text-white transition-colors duration-200 font-medium py-2 border-l-2 border-transparent hover:border-emerald-500 pl-4 hover:pl-6 transition-all text-left" 
-                >
-                  Services
-                </button>
-                <button 
-                  onClick={() => scrollToSection('process')}
-                  className="text-[#C0C0C0] hover:text-white transition-colors duration-200 font-medium py-2 border-l-2 border-transparent hover:border-emerald-500 pl-4 hover:pl-6 transition-all text-left" 
-                >
-                  Process
-                </button>
-                <button 
-                  onClick={() => scrollToSection('pricing')}
-                  className="text-[#C0C0C0] hover:text-white transition-colors duration-200 font-medium py-2 border-l-2 border-transparent hover:border-emerald-500 pl-4 hover:pl-6 transition-all text-left" 
-                >
-                  Pricing
-                </button>
-                <Link 
-                  to="/blog" 
-                  className="text-[#C0C0C0] hover:text-white transition-colors duration-200 font-medium py-2 border-l-2 border-transparent hover:border-emerald-500 pl-4 hover:pl-6 transition-all" 
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Blog
-                </Link>
-                <button 
-                  onClick={() => scrollToSection('contact')}
-                  className="text-[#C0C0C0] hover:text-white transition-colors duration-200 font-medium py-2 border-l-2 border-transparent hover:border-emerald-500 pl-4 hover:pl-6 transition-all text-left" 
-                >
-                  Contact
-                </button>
-              </nav>
-              <div className="mt-6 space-y-3">
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 rounded-md font-medium transition-all duration-200"
-                >
-                  Book Free Consultation
-                </button>
-                <Link 
-                  to="/auth" 
-                  className="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-md font-medium transition-all duration-200"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Sign In
-                </Link>
+          <>
+            {/* Backdrop overlay */}
+            <div 
+              className="fixed inset-0 bg-black/60 z-40 md:hidden"
+              onClick={() => setIsMenuOpen(false)}
+            />
+            
+            {/* Slide-in menu from left */}
+            <div className="fixed top-0 left-0 h-full w-80 bg-[#0F0F0F] border-r border-[#1A1A1A] shadow-2xl z-50 md:hidden transform transition-transform duration-300 ease-in-out">
+              <div className="p-6">
+                {/* Close button */}
+                <div className="flex justify-end mb-8">
+                  <Button 
+                    variant="ghost" 
+                    size="icon"
+                    className="text-[#C0C0C0] hover:text-white hover:bg-[#1A1A1A]"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <X className="h-6 w-6" />
+                  </Button>
+                </div>
+
+                <nav className="flex flex-col space-y-6">
+                  <button 
+                    onClick={() => scrollToSection('solutions')}
+                    className="text-[#C0C0C0] hover:text-white transition-colors duration-200 font-medium py-3 border-l-2 border-transparent hover:border-emerald-500 pl-4 hover:pl-6 transition-all text-left min-h-[44px] flex items-center" 
+                  >
+                    Services
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('process')}
+                    className="text-[#C0C0C0] hover:text-white transition-colors duration-200 font-medium py-3 border-l-2 border-transparent hover:border-emerald-500 pl-4 hover:pl-6 transition-all text-left min-h-[44px] flex items-center" 
+                  >
+                    Process
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('pricing')}
+                    className="text-[#C0C0C0] hover:text-white transition-colors duration-200 font-medium py-3 border-l-2 border-transparent hover:border-emerald-500 pl-4 hover:pl-6 transition-all text-left min-h-[44px] flex items-center" 
+                  >
+                    Pricing
+                  </button>
+                  <Link 
+                    to="/blog" 
+                    className="text-[#C0C0C0] hover:text-white transition-colors duration-200 font-medium py-3 border-l-2 border-transparent hover:border-emerald-500 pl-4 hover:pl-6 transition-all min-h-[44px] flex items-center" 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Blog
+                  </Link>
+                  <button 
+                    onClick={() => scrollToSection('contact')}
+                    className="text-[#C0C0C0] hover:text-white transition-colors duration-200 font-medium py-3 border-l-2 border-transparent hover:border-emerald-500 pl-4 hover:pl-6 transition-all text-left min-h-[44px] flex items-center" 
+                  >
+                    Contact
+                  </button>
+                </nav>
+
+                <div className="mt-8 space-y-4">
+                  <button
+                    onClick={() => scrollToSection('contact')}
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-md font-medium transition-all duration-200 min-h-[44px]"
+                  >
+                    Book Free Consultation
+                  </button>
+                  <Link 
+                    to="/auth" 
+                    className="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-md font-medium transition-all duration-200 min-h-[44px] flex items-center justify-center"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Sign In
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </header>

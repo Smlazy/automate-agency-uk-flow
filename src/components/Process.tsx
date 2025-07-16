@@ -1,130 +1,101 @@
 
-import { Card } from '@/components/ui/card';
-import { Search, FileText, Settings, TrendingUp } from 'lucide-react';
+import { Card, CardContent } from "@/components/ui/card";
+import { MessageSquare, Search, Cog, TestTube, Rocket, HeadphonesIcon } from "lucide-react";
+import SectionBackground from '@/components/SectionBackground';
 
 const Process = () => {
   const steps = [
     {
+      icon: MessageSquare,
+      number: "01",
+      title: "Discovery & Consultation",
+      description: "We start with a comprehensive analysis of your current processes, identifying automation opportunities and defining clear objectives.",
+      duration: "1-2 days"
+    },
+    {
       icon: Search,
-      title: "Automation Audit",
-      timeline: "Step 1",
-      description: "We analyse your current workflows to identify the highest-ROI automation opportunities",
-      details: [
-        "Map current workflows and identify bottlenecks",
-        "Calculate time spent on repetitive tasks", 
-        "Identify highest-ROI automation opportunities",
-        "Create custom automation roadmap"
-      ]
+      number: "02", 
+      title: "Strategy & Planning",
+      description: "Our experts design a custom automation roadmap tailored to your business needs, priorities, and technical requirements.",
+      duration: "2-3 days"
     },
     {
-      icon: FileText,
-      title: "Solution Design", 
-      timeline: "Step 2",
-      description: "Custom workflow design tailored to your specific business needs and existing tools",
-      details: [
-        "Design workflows specific to your business",
-        "Create mockups and process flows",
-        "Get stakeholder approval and feedback", 
-        "Finalise technical requirements"
-      ]
+      icon: Cog,
+      number: "03",
+      title: "Development & Integration",
+      description: "We build and integrate your automation solutions using industry-leading tools and best practices for maximum reliability.",
+      duration: "1-3 weeks"
     },
     {
-      icon: Settings,
-      title: "Build & Test",
-      timeline: "Step 3", 
-      description: "Development and rigorous testing of your automation systems with full integration",
-      details: [
-        "Develop custom automation solutions",
-        "Integrate with existing tools and systems",
-        "Comprehensive testing and refinement",
-        "Staff training and documentation"
-      ]
+      icon: TestTube,
+      number: "04",
+      title: "Testing & Optimization",
+      description: "Rigorous testing ensures your automations work flawlessly before deployment, with fine-tuning for optimal performance.",
+      duration: "3-5 days"
     },
     {
-      icon: TrendingUp,
-      title: "Launch & Optimise",
-      timeline: "Step 4",
-      description: "Go-live support with ongoing optimisation to maximise your automation ROI",
-      details: [
-        "Go-live support and monitoring", 
-        "Performance tracking and optimisation",
-        "Ongoing maintenance and updates",
-        "Monthly strategy and improvement calls"
-      ]
+      icon: Rocket,
+      number: "05",
+      title: "Launch & Training",
+      description: "We deploy your solutions and provide comprehensive training to ensure your team can leverage the new automations effectively.",
+      duration: "1-2 days"
+    },
+    {
+      icon: HeadphonesIcon,
+      number: "06",
+      title: "Ongoing Support",
+      description: "Continuous monitoring, maintenance, and optimization ensure your automations continue delivering value as your business grows.",
+      duration: "Ongoing"
     }
   ];
 
   return (
-    <section id="process" className="py-20 bg-[#0F0F0F]">
+    <SectionBackground id="process" className="py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            From Manual Processes to Automated Excellence
+            Our Proven Automation Process
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Our proven 4-step framework transforms business operations with measurable results
+            From initial consultation to ongoing optimization, we follow a structured approach that guarantees results and maximizes your ROI.
           </p>
         </div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {steps.map((step, index) => (
-              <div key={index} className="relative">
-                {/* Connection Line */}
-                {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-20 left-full w-8 h-0.5 bg-gradient-to-r from-emerald-500 to-indigo-500 z-10 transform translate-x-4"></div>
-                )}
-                
-                <Card className="bg-[#1A1A1A] border-gray-700 p-6 h-full hover:border-emerald-500 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20">
-                  <div className="text-center mb-6">
-                    <div className="relative">
-                      <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <Card key={index} className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/20 group">
+                <CardContent className="p-8">
+                  <div className="flex items-start space-x-6">
+                    <div className="flex-shrink-0">
+                      <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                         <step.icon className="text-white" size={28} />
                       </div>
-                      <div className="absolute -top-2 -right-2 w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
-                        {index + 1}
+                      <div className="text-2xl font-bold text-emerald-400 text-center">{step.number}</div>
+                    </div>
+                    
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
+                      <p className="text-gray-300 mb-4 leading-relaxed">{step.description}</p>
+                      <div className="inline-flex items-center px-3 py-1 bg-emerald-500/20 text-emerald-400 text-sm rounded-full">
+                        <span className="font-medium">Timeline: {step.duration}</span>
                       </div>
                     </div>
-                    <div className="text-sm text-emerald-500 font-semibold mb-2">{step.timeline}</div>
-                    <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
-                    <p className="text-gray-300 text-sm">{step.description}</p>
                   </div>
-
-                  <div className="space-y-2">
-                    {step.details.map((detail, idx) => (
-                      <div key={idx} className="flex items-start text-sm">
-                        <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                        <div className="text-gray-300">{detail}</div>
-                      </div>
-                    ))}
-                  </div>
-                </Card>
-              </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
+        </div>
 
-          <div className="mt-16 text-center">
-            <div className="bg-[#1A1A1A] p-8 rounded-xl border border-gray-700 max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold text-white mb-4">Why Our Process Works</h3>
-              <div className="grid md:grid-cols-3 gap-6 text-center">
-                <div>
-                  <div className="text-3xl font-bold text-emerald-500 mb-2">95%</div>
-                  <div className="text-gray-300">Implementation Success Rate</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-emerald-500 mb-2">30 Days</div>
-                  <div className="text-gray-300">Average Time to ROI</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-emerald-500 mb-2">100%</div>
-                  <div className="text-gray-300">Client Satisfaction</div>
-                </div>
-              </div>
-            </div>
+        <div className="text-center mt-16">
+          <div className="inline-flex items-center space-x-4 bg-white/10 backdrop-blur-sm rounded-lg px-8 py-4">
+            <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+            <p className="text-white font-medium">Ready to automate your business processes?</p>
           </div>
         </div>
       </div>
-    </section>
+    </SectionBackground>
   );
 };
 
