@@ -43,7 +43,7 @@ const ContactForm = () => {
   };
 
   return (
-    <Card className="bg-[#1A1A1A] border-gray-700 p-8">
+    <Card className="bg-[rgba(30,41,59,0.6)] border-[rgba(34,211,238,0.2)] p-8 transition-all duration-400 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/20">
       <h3 className="text-2xl font-bold text-white mb-6">Book Your Free Automation Strategy Call</h3>
       <p className="text-gray-300 mb-6">
         30-minute consultation • Custom automation recommendations • ROI projections • No obligation
@@ -56,7 +56,7 @@ const ContactForm = () => {
             <Input
               value={formData.name}
               onChange={(e) => handleChange('name', e.target.value)}
-              className="bg-[#0F0F0F] border-gray-600 text-white"
+              className="bg-[rgba(15,23,42,0.8)] border-[rgba(34,211,238,0.2)] text-white focus:border-[rgba(34,211,238,0.4)] focus:shadow-[0_0_0_2px_rgba(34,211,238,0.1)] transition-all duration-300"
               placeholder="Your name"
               required
             />
@@ -67,7 +67,7 @@ const ContactForm = () => {
               type="email"
               value={formData.email}
               onChange={(e) => handleChange('email', e.target.value)}
-              className="bg-[#0F0F0F] border-gray-600 text-white"
+              className="bg-[rgba(15,23,42,0.8)] border-[rgba(34,211,238,0.2)] text-white focus:border-[rgba(34,211,238,0.4)] focus:shadow-[0_0_0_2px_rgba(34,211,238,0.1)] transition-all duration-300"
               placeholder="your.email@company.com"
               required
             />
@@ -79,7 +79,7 @@ const ContactForm = () => {
           <Input
             value={formData.company}
             onChange={(e) => handleChange('company', e.target.value)}
-            className="bg-[#0F0F0F] border-gray-600 text-white"
+            className="bg-[rgba(15,23,42,0.8)] border-[rgba(34,211,238,0.2)] text-white focus:border-[rgba(34,211,238,0.4)] focus:shadow-[0_0_0_2px_rgba(34,211,238,0.1)] transition-all duration-300"
             placeholder="Your company name"
             required
           />
@@ -89,28 +89,28 @@ const ContactForm = () => {
           <div>
             <label className="block text-white font-medium mb-2">Industry *</label>
             <Select value={formData.industry} onValueChange={(value) => handleChange('industry', value)}>
-              <SelectTrigger className="bg-[#0F0F0F] border-gray-600 text-white">
+              <SelectTrigger className="bg-[rgba(15,23,42,0.8)] border-[rgba(34,211,238,0.2)] text-white focus:border-[rgba(34,211,238,0.4)] transition-all duration-300">
                 <SelectValue placeholder="Select your industry" />
               </SelectTrigger>
-              <SelectContent className="bg-[#0F0F0F] border-gray-600">
-                <SelectItem value="recruitment" className="text-white hover:bg-[#1A1A1A] focus:bg-[#1A1A1A]">Recruitment Agency</SelectItem>
-                <SelectItem value="realestate" className="text-white hover:bg-[#1A1A1A] focus:bg-[#1A1A1A]">Real Estate Agency</SelectItem>
-                <SelectItem value="marketing" className="text-white hover:bg-[#1A1A1A] focus:bg-[#1A1A1A]">Marketing Agency</SelectItem>
-                <SelectItem value="other" className="text-white hover:bg-[#1A1A1A] focus:bg-[#1A1A1A]">Other</SelectItem>
+              <SelectContent className="bg-[rgba(15,23,42,0.9)] border-[rgba(34,211,238,0.2)]">
+                <SelectItem value="recruitment" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">Recruitment Agency</SelectItem>
+                <SelectItem value="realestate" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">Real Estate Agency</SelectItem>
+                <SelectItem value="marketing" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">Marketing Agency</SelectItem>
+                <SelectItem value="other" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">Other</SelectItem>
               </SelectContent>
             </Select>
           </div>
           <div>
             <label className="block text-white font-medium mb-2">Timeline</label>
             <Select value={formData.timeline} onValueChange={(value) => handleChange('timeline', value)}>
-              <SelectTrigger className="bg-[#0F0F0F] border-gray-600 text-white">
+              <SelectTrigger className="bg-[rgba(15,23,42,0.8)] border-[rgba(34,211,238,0.2)] text-white focus:border-[rgba(34,211,238,0.4)] transition-all duration-300">
                 <SelectValue placeholder="When do you want to start?" />
               </SelectTrigger>
-              <SelectContent className="bg-[#0F0F0F] border-gray-600">
-                <SelectItem value="asap" className="text-white hover:bg-[#1A1A1A] focus:bg-[#1A1A1A]">ASAP</SelectItem>
-                <SelectItem value="month" className="text-white hover:bg-[#1A1A1A] focus:bg-[#1A1A1A]">Within a month</SelectItem>
-                <SelectItem value="quarter" className="text-white hover:bg-[#1A1A1A] focus:bg-[#1A1A1A]">Within 3 months</SelectItem>
-                <SelectItem value="exploring" className="text-white hover:bg-[#1A1A1A] focus:bg-[#1A1A1A]">Just exploring</SelectItem>
+              <SelectContent className="bg-[rgba(15,23,42,0.9)] border-[rgba(34,211,238,0.2)]">
+                <SelectItem value="asap" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">ASAP</SelectItem>
+                <SelectItem value="month" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">Within a month</SelectItem>
+                <SelectItem value="quarter" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">Within 3 months</SelectItem>
+                <SelectItem value="exploring" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">Just exploring</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -122,11 +122,11 @@ const ContactForm = () => {
             value={formData.challenge}
             onChange={(e) => handleChange('challenge', e.target.value)}
             placeholder="What manual process is taking up most of your team's time?"
-            className="bg-[#0F0F0F] border-gray-600 text-white min-h-[100px]"
+            className="bg-[rgba(15,23,42,0.8)] border-[rgba(34,211,238,0.2)] text-white min-h-[100px] focus:border-[rgba(34,211,238,0.4)] focus:shadow-[0_0_0_2px_rgba(34,211,238,0.1)] transition-all duration-300 resize-none"
           />
         </div>
 
-        <Button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 text-lg">
+        <Button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
           Book Free Strategy Call
         </Button>
       </form>

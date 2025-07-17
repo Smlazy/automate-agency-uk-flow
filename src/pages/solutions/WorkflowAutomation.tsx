@@ -1,88 +1,89 @@
 
+import { ArrowRight, CheckCircle, Zap, Clock, Users, BarChart3 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Check, ArrowRight, Workflow, Clock, Target, TrendingUp } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SectionBackground from '@/components/SectionBackground';
 
-export default function WorkflowAutomation() {
-  const integrationTools = [
-    'Zapier', 'Microsoft 365', 'Google Workspace', 'Slack', 'Trello', 'Asana',
-    'Monday.com', 'Notion', 'Airtable', 'Dropbox', 'OneDrive', 'SharePoint'
+const WorkflowAutomation = () => {
+  const tools = [
+    "Zapier", "Microsoft 365", "Google Workspace", "Slack", "Trello", 
+    "Asana", "Monday.com", "Notion", "Airtable", "Dropbox"
   ];
 
   const achievements = [
-    { title: 'Eliminate 60-80% of manual administrative tasks', icon: Target },
-    { title: 'Reduce processing time from hours to minutes', icon: Clock },
-    { title: 'Ensure 100% consistency in repetitive processes', icon: Check },
-    { title: 'Free up staff time for strategic work', icon: TrendingUp },
-    { title: 'Reduce human error by 95%', icon: Workflow }
+    "Eliminate 60-80% of manual administrative tasks",
+    "Reduce processing time from hours to minutes", 
+    "Ensure 100% consistency in repetitive processes",
+    "Free up staff time for strategic work",
+    "Reduce human error by 95%"
   ];
 
-  const processSteps = [
+  const steps = [
     {
-      step: '1',
-      title: 'Process Mapping',
-      description: 'We analyse your current workflows and identify automation opportunities'
+      icon: BarChart3,
+      title: "Process Mapping",
+      description: "We analyse your current workflows to identify automation opportunities"
     },
     {
-      step: '2',
-      title: 'Automation Design',
-      description: 'Create intelligent triggers and actions tailored to your business'
+      icon: Zap,
+      title: "Automation Design", 
+      description: "Create intelligent triggers and actions that work seamlessly"
     },
     {
-      step: '3',
-      title: 'Integration Setup',
-      description: 'Connect all your existing tools seamlessly'
+      icon: Users,
+      title: "Integration Setup",
+      description: "Connect all your existing tools into unified workflows"
     },
     {
-      step: '4',
-      title: 'Testing & Launch',
-      description: 'Ensure flawless operation before going live'
+      icon: CheckCircle,
+      title: "Testing & Launch",
+      description: "Ensure flawless operation before going live"
     }
   ];
 
-  const industryExamples = [
+  const examples = [
     {
-      industry: 'SaaS Companies',
-      description: 'Automate user onboarding, feature adoption tracking, and renewal processes',
-      benefits: ['Reduced churn by 25%', 'Faster onboarding', 'Automated renewals']
+      industry: "SaaS Companies",
+      description: "Automate user onboarding, feature adoption tracking, and renewal processes"
     },
     {
-      industry: 'Agencies',
-      description: 'Streamline client onboarding, project management, and reporting workflows',
-      benefits: ['50% faster project delivery', 'Automated reporting', 'Better client satisfaction']
+      industry: "Agencies", 
+      description: "Streamline client onboarding, project management, and reporting workflows"
     },
     {
-      industry: 'Service Businesses',
-      description: 'Automate appointment confirmations, follow-ups, and invoice generation',
-      benefits: ['Reduced no-shows', 'Faster payments', 'Improved customer experience']
+      industry: "Service Businesses",
+      description: "Automate appointment confirmations, follow-ups, and invoice generation"
     }
   ];
+
+  const navigateToContact = () => {
+    window.location.href = '/#contact';
+  };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-background to-muted/20">
       <Header />
       
       {/* Hero Section */}
       <SectionBackground className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-8">
-              <Workflow className="text-white" size={40} />
-            </div>
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Workflow Automation
+              Workflow <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">Automation</span>
             </h1>
-            <p className="text-xl md:text-2xl text-emerald-400 mb-6 font-medium">
+            <p className="text-xl md:text-2xl text-gray-300 mb-8">
               Eliminate Manual Tasks, Maximise Efficiency
             </p>
-            <p className="text-lg text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg text-gray-400 mb-8 max-w-3xl mx-auto">
               Transform repetitive processes into intelligent, automated workflows that run 24/7 without human intervention.
             </p>
-            <Button className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-emerald-500/25 transition-all duration-300">
+            <Button
+              onClick={navigateToContact}
+              className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8 py-4 text-lg font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+            >
               Book Free Consultation
               <ArrowRight className="ml-2" size={20} />
             </Button>
@@ -91,49 +92,42 @@ export default function WorkflowAutomation() {
       </SectionBackground>
 
       {/* Tools Integration Section */}
-      <SectionBackground className="py-16">
+      <section className="py-16 bg-white/5">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-white text-center mb-4">
-              Tools We Integrate With
-            </h2>
-            <p className="text-gray-300 text-center mb-12">
-              Connect your existing tools seamlessly
-            </p>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-8">
-              {integrationTools.map((tool, index) => (
-                <Card key={index} className="bg-white/5 border-white/10 p-4 text-center hover:bg-white/10 transition-colors">
-                  <div className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-800 rounded-lg mx-auto mb-3 flex items-center justify-center filter grayscale hover:grayscale-0 transition-all duration-300">
-                    <span className="text-white text-xs font-bold">{tool.slice(0, 2)}</span>
-                  </div>
-                  <p className="text-gray-300 text-sm font-medium">{tool}</p>
-                </Card>
-              ))}
-            </div>
-            
-            <p className="text-center text-gray-400 font-medium">
-              And 500+ more platforms and applications
-            </p>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-4">Tools We Integrate With</h2>
+            <p className="text-gray-400">Connect your existing tools into powerful automated workflows</p>
           </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 max-w-4xl mx-auto mb-8">
+            {tools.map((tool, index) => (
+              <div key={index} className="text-center">
+                <div className="w-16 h-16 bg-white/10 rounded-lg flex items-center justify-center mb-3 mx-auto grayscale hover:grayscale-0 transition-all duration-300 hover:scale-105">
+                  <span className="text-white font-semibold text-sm">{tool}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <p className="text-center text-gray-400 text-lg">And 500+ more</p>
         </div>
-      </SectionBackground>
+      </section>
 
       {/* What You'll Achieve Section */}
       <SectionBackground className="py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-white text-center mb-12">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
               What You'll Achieve
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 gap-6">
               {achievements.map((achievement, index) => (
-                <Card key={index} className="bg-white/10 border-white/20 p-6 hover:bg-white/15 transition-colors">
-                  <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center mb-4">
-                    <achievement.icon className="text-white" size={24} />
-                  </div>
-                  <h3 className="text-white font-bold mb-2">{achievement.title}</h3>
+                <Card key={index} className="bg-white/10 border-white/20 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
+                  <CardContent className="p-6 flex items-start">
+                    <CheckCircle className="text-emerald-400 mr-4 mt-1 flex-shrink-0" size={24} />
+                    <span className="text-gray-300">{achievement}</span>
+                  </CardContent>
                 </Card>
               ))}
             </div>
@@ -142,49 +136,43 @@ export default function WorkflowAutomation() {
       </SectionBackground>
 
       {/* How It Works Section */}
-      <SectionBackground className="py-16">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-white text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
               How It Works
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {processSteps.map((step, index) => (
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {steps.map((step, index) => (
                 <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white text-xl font-bold">{step.step}</span>
+                  <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center mb-6 mx-auto transition-transform duration-300 hover:scale-110">
+                    <step.icon className="text-white" size={28} />
                   </div>
-                  <h3 className="text-white font-bold mb-2">{step.title}</h3>
-                  <p className="text-gray-300 text-sm">{step.description}</p>
+                  <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
+                  <p className="text-gray-400">{step.description}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </SectionBackground>
+      </section>
 
       {/* Industry Examples Section */}
       <SectionBackground className="py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-white text-center mb-12">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
               Industry Examples
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {industryExamples.map((example, index) => (
-                <Card key={index} className="bg-white/10 border-white/20 p-6 hover:bg-white/15 transition-colors">
-                  <h3 className="text-emerald-400 font-bold text-lg mb-3">{example.industry}</h3>
-                  <p className="text-gray-300 mb-4">{example.description}</p>
-                  <div className="space-y-2">
-                    {example.benefits.map((benefit, idx) => (
-                      <div key={idx} className="flex items-center text-gray-300">
-                        <Check className="text-emerald-500 mr-2 flex-shrink-0" size={16} />
-                        <span className="text-sm">{benefit}</span>
-                      </div>
-                    ))}
-                  </div>
+            <div className="space-y-6">
+              {examples.map((example, index) => (
+                <Card key={index} className="bg-white/10 border-white/20 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
+                  <CardContent className="p-8">
+                    <h3 className="text-xl font-bold text-emerald-400 mb-3">{example.industry}</h3>
+                    <p className="text-gray-300">{example.description}</p>
+                  </CardContent>
                 </Card>
               ))}
             </div>
@@ -193,43 +181,33 @@ export default function WorkflowAutomation() {
       </SectionBackground>
 
       {/* CTA Section */}
-      <SectionBackground className="py-20">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Transform Your Workflows?
-            </h2>
-            <p className="text-lg text-gray-300 mb-8">
-              Join hundreds of businesses that have eliminated manual processes and increased efficiency
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-emerald-500/25 transition-all duration-300">
-                Book Free Consultation
-                <ArrowRight className="ml-2" size={20} />
+            <div className="bg-gradient-to-r from-emerald-600 to-cyan-600 rounded-2xl p-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                Ready to Automate Your Workflows?
+              </h2>
+              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                Get expert automation guidance tailored to your specific business needs and processes.
+              </p>
+              <Button
+                onClick={navigateToContact}
+                className="bg-white text-emerald-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              >
+                Book Your Free Consultation
               </Button>
-              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 px-8 py-4 text-lg font-semibold rounded-lg">
-                View Pricing
-              </Button>
-            </div>
-            <div className="mt-8 flex items-center justify-center space-x-8 text-gray-400">
-              <div className="flex items-center">
-                <Check className="text-emerald-500 mr-2" size={16} />
-                <span className="text-sm">UK-Based Team</span>
-              </div>
-              <div className="flex items-center">
-                <Check className="text-emerald-500 mr-2" size={16} />
-                <span className="text-sm">30-Day Guarantee</span>
-              </div>
-              <div className="flex items-center">
-                <Check className="text-emerald-500 mr-2" size={16} />
-                <span className="text-sm">No Long-Term Contracts</span>
+              <div className="mt-6 text-white/80 text-sm">
+                ✓ 30-minute strategy session ✓ Custom automation recommendations ✓ ROI projections
               </div>
             </div>
           </div>
         </div>
-      </SectionBackground>
+      </section>
 
       <Footer />
     </div>
   );
-}
+};
+
+export default WorkflowAutomation;
