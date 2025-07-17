@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -176,7 +177,7 @@ const Pricing = () => {
               return (
                 <Card 
                   key={index} 
-                  className={`bg-white/10 backdrop-blur-sm border-white/20 p-8 transition-all duration-300 hover:border-emerald-500 hover:shadow-2xl hover:-translate-y-2 flex flex-col h-full relative cursor-pointer
+                  className={`bg-white/10 backdrop-blur-sm border-white/20 p-8 transition-all duration-400 hover:border-emerald-500 hover:shadow-2xl hover:-translate-y-2 flex flex-col h-full relative cursor-pointer
                     ${isSelected ? 'ring-2 ring-emerald-500 shadow-xl border-emerald-500' : 'shadow-lg'}
                     ${shouldScale ? 'scale-105' : ''}
                     ${isGrowth && (isSelected || pkg.id === 'growth') ? 'scale-105' : ''}
@@ -191,7 +192,7 @@ const Pricing = () => {
                     </div>
                   )}
                   
-                  <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${pkg.color} flex items-center justify-center mb-6 shadow-lg`}>
+                  <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${pkg.color} flex items-center justify-center mb-6 shadow-lg transition-transform duration-300 hover:scale-110`}>
                     <pkg.icon className="text-white" size={32} />
                   </div>
 
@@ -223,7 +224,7 @@ const Pricing = () => {
                         e.stopPropagation();
                         handleGetStarted(pkg.id);
                       }}
-                      className={`w-full py-3 px-6 rounded-md font-medium transition-all duration-200 active:scale-95 ${pkg.buttonColor} text-white hover:shadow-lg`}
+                      className={`w-full py-3 px-6 rounded-md font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-95 ${pkg.buttonColor} text-white`}
                     >
                       {pkg.buttonText}
                     </Button>
@@ -245,17 +246,19 @@ const Pricing = () => {
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {supportPackages.map((pkg, index) => {
               const isSelected = selectedSupport === pkg.id;
+              const isPremium = pkg.id === 'premium';
               
               return (
                 <Card 
                   key={index} 
-                  className={`bg-white/10 backdrop-blur-sm border-white/20 p-6 transition-all duration-300 hover:border-emerald-500 hover:shadow-lg flex flex-col h-full relative cursor-pointer
-                    ${pkg.recommended && !isSelected ? 'ring-2 ring-indigo-500 border-indigo-500' : ''}
+                  className={`bg-white/10 backdrop-blur-sm border-white/20 p-6 transition-all duration-400 hover:border-emerald-500 hover:shadow-lg hover:-translate-y-2 flex flex-col h-full relative cursor-pointer
+                    ${isPremium ? 'ring-2 ring-indigo-500 border-indigo-500' : ''}
                     ${isSelected ? 'ring-2 ring-emerald-500 bg-indigo-950/20 border-emerald-500' : ''}
                   `}
                   onClick={() => handleSupportSelect(pkg.id)}
                 >
-                  {pkg.recommended && !isSelected && (
+                  {/* Always show Recommended tag for Premium Support */}
+                  {isPremium && (
                     <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                       <span className="bg-indigo-500 text-white px-3 py-1 rounded-full text-xs font-medium">
                         Recommended
@@ -264,7 +267,7 @@ const Pricing = () => {
                   )}
                   
                   <div className="text-center mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-indigo-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-indigo-500 rounded-lg flex items-center justify-center mx-auto mb-4 transition-transform duration-300 hover:scale-110">
                       <pkg.icon className="text-white" size={24} />
                     </div>
                     <h4 className="text-lg font-bold text-white mb-2">{pkg.name}</h4>
@@ -295,7 +298,6 @@ const Pricing = () => {
         <div className="max-w-6xl mx-auto mb-16">
           <Card className="bg-white/10 backdrop-blur-sm border-emerald-500 p-8 shadow-xl">
             <div className="grid lg:grid-cols-2 gap-8">
-              {/* Left Column - What Happens After Launch */}
               <div>
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-white mb-3 flex items-center justify-center">
@@ -341,7 +343,6 @@ const Pricing = () => {
                 </div>
               </div>
 
-              {/* Right Column - Why Choose Us */}
               <div>
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-white mb-3 flex items-center justify-center">
@@ -351,19 +352,19 @@ const Pricing = () => {
                 </div>
 
                 <div className="grid grid-cols-1 gap-4">
-                  <div className="bg-white/5 p-4 rounded-lg border border-gray-700 text-center">
+                  <div className="bg-white/5 p-4 rounded-lg border border-gray-700 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                     <Users className="text-emerald-500 mx-auto mb-2" size={24} />
                     <div className="text-white font-semibold mb-1">UK-Based Team</div>
                     <div className="text-gray-400 text-sm">Expert support in your timezone</div>
                   </div>
                   
-                  <div className="bg-white/5 p-4 rounded-lg border border-gray-700 text-center">
+                  <div className="bg-white/5 p-4 rounded-lg border border-gray-700 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                     <Shield className="text-emerald-500 mx-auto mb-2" size={24} />
                     <div className="text-white font-semibold mb-1">30-Day Guarantee</div>
                     <div className="text-gray-400 text-sm">Full refund if not satisfied</div>
                   </div>
                   
-                  <div className="bg-white/5 p-4 rounded-lg border border-gray-700 text-center">
+                  <div className="bg-white/5 p-4 rounded-lg border border-gray-700 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                     <Check className="text-emerald-500 mx-auto mb-2" size={24} />
                     <div className="text-white font-semibold mb-1">No Lock-ins</div>
                     <div className="text-gray-400 text-sm">Cancel support anytime</div>
@@ -375,7 +376,7 @@ const Pricing = () => {
             <div className="text-center mt-8 pt-6 border-t border-gray-700">
               <Button 
                 onClick={() => window.location.href = '/signup'}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 text-lg font-semibold transition-all duration-300 hover:shadow-lg"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 text-lg font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
               >
                 Start Your Automation Journey
               </Button>

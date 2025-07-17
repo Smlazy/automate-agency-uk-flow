@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#0F0F0F] border-t border-gray-800 py-12">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
             <Link to="/" className="text-2xl font-bold text-white mb-4 block">
               V<span className="text-emerald-500">A</span>NTIVE D<span className="text-emerald-500">I</span>GITAL
@@ -33,24 +33,34 @@ const Footer = () => {
             <h4 className="text-white font-semibold mb-4">Solutions</h4>
             <ul className="space-y-2 text-gray-300 text-sm">
               <li>
-                <button onClick={() => scrollToSection('solutions')} className="hover:text-white transition-colors">
-                  Recruitment Automation
-                </button>
+                <Link to="/solutions/workflow-automation" className="hover:text-white transition-colors duration-300 hover:-translate-y-0.5 inline-block">
+                  Workflow Automation
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('solutions')} className="hover:text-white transition-colors">
-                  Real Estate Automation
-                </button>
+                <Link to="/solutions/communication-automation" className="hover:text-white transition-colors duration-300 hover:-translate-y-0.5 inline-block">
+                  Communication Automation
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('solutions')} className="hover:text-white transition-colors">
-                  Marketing Automation
-                </button>
+                <Link to="/solutions/lead-generation" className="hover:text-white transition-colors duration-300 hover:-translate-y-0.5 inline-block">
+                  Lead Generation
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('pricing')} className="hover:text-white transition-colors">
-                  Custom Solutions
-                </button>
+                <Link to="/solutions/crm-integration" className="hover:text-white transition-colors duration-300 hover:-translate-y-0.5 inline-block">
+                  CRM Integration
+                </Link>
+              </li>
+              <li>
+                <Link to="/solutions/scheduling-booking" className="hover:text-white transition-colors duration-300 hover:-translate-y-0.5 inline-block">
+                  Scheduling & Booking
+                </Link>
+              </li>
+              <li>
+                <Link to="/solutions/custom-integrations" className="hover:text-white transition-colors duration-300 hover:-translate-y-0.5 inline-block">
+                  Custom Integrations
+                </Link>
               </li>
             </ul>
           </div>
@@ -59,47 +69,30 @@ const Footer = () => {
             <h4 className="text-white font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-gray-300 text-sm">
               <li>
-                <button onClick={() => scrollToSection('process')} className="hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('process')} className="hover:text-white transition-colors duration-300 hover:-translate-y-0.5 inline-block">
                   Our Process
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollToSection('results')} className="hover:text-white transition-colors">
-                  Industry Insights
-                </button>
-              </li>
-              <li>
-                <Link to="/blog" className="hover:text-white transition-colors">
-                  Blog & Insights
+                <Link to="/blog" className="hover:text-white transition-colors duration-300 hover:-translate-y-0.5 inline-block">
+                  Industry Focus
                 </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('pricing')} className="hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('pricing')} className="hover:text-white transition-colors duration-300 hover:-translate-y-0.5 inline-block">
                   Pricing
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollToSection('contact')} className="hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('contact')} className="hover:text-white transition-colors duration-300 hover:-translate-y-0.5 inline-block">
                   Contact Us
                 </button>
               </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-semibold mb-4">Get Started</h4>
-            <ul className="space-y-2 text-gray-300 text-sm">
               <li>
-                <button onClick={() => scrollToSection('contact')} className="hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('contact')} className="hover:text-white transition-colors duration-300 hover:-translate-y-0.5 inline-block">
                   Free Strategy Call
                 </button>
               </li>
-              <li>
-                <button onClick={() => scrollToSection('contact')} className="hover:text-white transition-colors">
-                  Automation Audit
-                </button>
-              </li>
-              <li>Email: info@vantive.digital</li>
             </ul>
           </div>
         </div>
@@ -110,15 +103,15 @@ const Footer = () => {
               © 2024 Vantive Digital. All rights reserved. • UK Company Registration: [Number] • VAT: [Number]
             </div>
             <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+              <Link to="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors duration-300 hover:-translate-y-0.5 inline-block">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+              </Link>
+              <Link to="/terms" className="text-gray-400 hover:text-white text-sm transition-colors duration-300 hover:-translate-y-0.5 inline-block">
                 Terms of Service
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+              </Link>
+              <Link to="/cookies" className="text-gray-400 hover:text-white text-sm transition-colors duration-300 hover:-translate-y-0.5 inline-block">
                 Cookie Policy
-              </a>
+              </Link>
             </div>
           </div>
         </div>

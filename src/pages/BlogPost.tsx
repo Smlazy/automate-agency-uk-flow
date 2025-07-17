@@ -1,6 +1,6 @@
 
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { blogPosts, BlogPost as BlogPostType } from '@/data/blogPosts';
+import { blogPosts } from '@/data/blogPosts';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, User, ArrowLeft, Tag } from 'lucide-react';
 import Header from '@/components/Header';
@@ -23,14 +23,14 @@ const BlogPost = () => {
     .slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-[#0F0F0F]">
+    <div className="min-h-screen bg-gradient-to-br from-background to-muted/20">
       <Header />
       
       {/* Hero Section */}
       <section className="pt-24 pb-8">
         <div className="container mx-auto px-4">
           <Link to="/blog">
-            <Button variant="ghost" className="text-[#8B1538] hover:text-[#7A1230] mb-6">
+            <Button variant="ghost" className="text-emerald-400 hover:text-emerald-300 mb-6">
               <ArrowLeft size={16} className="mr-2" />
               Back to Blog
             </Button>
@@ -69,11 +69,11 @@ const BlogPost = () => {
             </h1>
             
             <div className="flex flex-wrap gap-2 mb-8">
-              <span className="bg-[#8B1538] text-white px-3 py-1 rounded text-sm">
+              <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 text-white px-3 py-1 rounded text-sm">
                 {post.category}
               </span>
               {post.tags.map(tag => (
-                <span key={tag} className="bg-gray-700 text-gray-300 px-3 py-1 rounded text-sm flex items-center gap-1">
+                <span key={tag} className="bg-white/10 text-gray-300 px-3 py-1 rounded text-sm flex items-center gap-1">
                   <Tag size={12} />
                   {tag}
                 </span>
@@ -102,7 +102,7 @@ const BlogPost = () => {
             </div>
             
             {/* Call to Action */}
-            <div className="mt-12 p-8 bg-gradient-to-r from-[#8B1538] to-[#7A1230] rounded-xl text-center">
+            <div className="mt-12 p-8 bg-gradient-to-r from-emerald-600 to-cyan-600 rounded-xl text-center">
               <h3 className="text-2xl font-bold text-white mb-4">
                 Ready to Transform Your Business?
               </h3>
@@ -110,7 +110,7 @@ const BlogPost = () => {
                 Get expert automation guidance tailored to your specific needs and industry.
               </p>
               <Link to="/#contact">
-                <Button className="bg-white text-[#8B1538] hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
+                <Button className="bg-white text-emerald-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
                   Book Your Free Consultation
                 </Button>
               </Link>
@@ -121,7 +121,7 @@ const BlogPost = () => {
 
       {/* Related Articles */}
       {relatedPosts.length > 0 && (
-        <section className="py-16 bg-[#1A1A1A]">
+        <section className="py-16 bg-white/5">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-white mb-8 text-center">
@@ -130,7 +130,7 @@ const BlogPost = () => {
               
               <div className="grid md:grid-cols-3 gap-8">
                 {relatedPosts.map((relatedPost) => (
-                  <div key={relatedPost.id} className="bg-[#0F0F0F] rounded-lg overflow-hidden border border-gray-700 hover:border-[#8B1538] transition-colors group">
+                  <div key={relatedPost.id} className="bg-white/10 rounded-lg overflow-hidden border border-white/20 hover:border-emerald-500 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl group">
                     <div className="aspect-video overflow-hidden">
                       <img 
                         src={relatedPost.image} 
@@ -140,7 +140,7 @@ const BlogPost = () => {
                     </div>
                     
                     <div className="p-6">
-                      <h3 className="text-lg font-bold text-white mb-2 line-clamp-2 group-hover:text-[#8B1538] transition-colors">
+                      <h3 className="text-lg font-bold text-white mb-2 line-clamp-2 group-hover:text-emerald-400 transition-colors">
                         {relatedPost.title}
                       </h3>
                       
@@ -154,7 +154,7 @@ const BlogPost = () => {
                       </div>
                       
                       <Link to={`/blog/${relatedPost.slug}`}>
-                        <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-[#8B1538] hover:border-[#8B1538] hover:text-white">
+                        <Button variant="outline" className="w-full border-white/20 text-gray-300 hover:bg-emerald-600 hover:border-emerald-600 hover:text-white transition-all duration-300">
                           Read More
                         </Button>
                       </Link>
