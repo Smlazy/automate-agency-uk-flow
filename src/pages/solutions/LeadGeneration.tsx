@@ -1,4 +1,3 @@
-
 import { ArrowRight, CheckCircle, Magnet, Target, Users, BarChart3 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -15,7 +14,7 @@ const LeadGeneration = () => {
       category: "CRM"
     },
     {
-      name: "Salesforce",
+      name: "Salesforce", 
       logo: "https://img.icons8.com/color/96/salesforce.png",
       category: "CRM"
     },
@@ -51,7 +50,7 @@ const LeadGeneration = () => {
     },
     {
       name: "ConvertKit",
-      logo: "https://cdn.worldvectorlogo.com/logos/convertkit.svg",
+      logo: "https://img.icons8.com/color/96/convertkit.png",
       category: "Email Marketing"
     },
     {
@@ -194,7 +193,21 @@ const LeadGeneration = () => {
                 <img 
                   src={tool.logo} 
                   alt={tool.name} 
-                  className="w-12 h-12 mb-2 filter grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  className="w-12 h-12 mb-2 transition-all duration-300"
+                  style={{
+                    filter: 'sepia(100%) saturate(150%) hue-rotate(180deg) brightness(0.9) contrast(1.1)',
+                    opacity: 0.8
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.filter = 'none';
+                    e.target.style.opacity = '1';
+                    e.target.style.transform = 'scale(1.05)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.filter = 'sepia(100%) saturate(150%) hue-rotate(180deg) brightness(0.9) contrast(1.1)';
+                    e.target.style.opacity = '0.8';
+                    e.target.style.transform = 'scale(1)';
+                  }}
                 />
                 <span className="text-sm font-semibold text-gray-300 text-center">{tool.name}</span>
                 <span className="text-xs text-gray-500 mt-1">{tool.category}</span>

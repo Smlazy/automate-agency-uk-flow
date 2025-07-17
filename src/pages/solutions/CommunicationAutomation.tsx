@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Check, ArrowRight, MessageSquare, Clock, Target, TrendingUp } from 'lucide-react';
@@ -14,13 +13,13 @@ export default function CommunicationAutomation() {
       category: "Email Marketing"
     },
     {
-      name: "HubSpot",
+      name: "HubSpot", 
       logo: "https://img.icons8.com/color/96/hubspot.png",
       category: "CRM"
     },
     {
       name: "Intercom",
-      logo: "https://img.icons8.com/color/96/intercom.png", 
+      logo: "https://img.icons8.com/color/96/intercom.png",
       category: "Customer Support"
     },
     {
@@ -30,12 +29,12 @@ export default function CommunicationAutomation() {
     },
     {
       name: "Microsoft Teams",
-      logo: "https://img.icons8.com/color/96/microsoft-teams.png",
+      logo: "https://img.icons8.com/fluency/96/microsoft-teams-2019.png",
       category: "Internal Communication"
     },
     {
       name: "WhatsApp Business",
-      logo: "https://img.icons8.com/color/96/whatsapp-business.png",
+      logo: "https://img.icons8.com/color/96/whatsapp--v1.png",
       category: "Messaging"
     },
     {
@@ -50,12 +49,12 @@ export default function CommunicationAutomation() {
     },
     {
       name: "Gmail",
-      logo: "https://img.icons8.com/color/96/gmail.png",
+      logo: "https://img.icons8.com/fluency/96/gmail-new.png",
       category: "Email"
     },
     {
       name: "Outlook",
-      logo: "https://img.icons8.com/color/96/microsoft-outlook-2019.png",
+      logo: "https://img.icons8.com/fluency/96/microsoft-outlook-2019.png",
       category: "Email"
     },
     {
@@ -65,7 +64,7 @@ export default function CommunicationAutomation() {
     },
     {
       name: "ConvertKit",
-      logo: "https://cdn.worldvectorlogo.com/logos/convertkit.svg",
+      logo: "https://img.icons8.com/color/96/convertkit.png",
       category: "Email Marketing"
     }
   ];
@@ -196,7 +195,21 @@ export default function CommunicationAutomation() {
                   <img 
                     src={tool.logo} 
                     alt={tool.name} 
-                    className="w-12 h-12 mb-2 filter grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                    className="w-12 h-12 mb-2 transition-all duration-300" 
+                    style={{
+                      filter: 'sepia(100%) saturate(150%) hue-rotate(180deg) brightness(0.9) contrast(1.1)',
+                      opacity: 0.8
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.filter = 'none';
+                      e.target.style.opacity = '1';
+                      e.target.style.transform = 'scale(1.05)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.filter = 'sepia(100%) saturate(150%) hue-rotate(180deg) brightness(0.9) contrast(1.1)';
+                      e.target.style.opacity = '0.8';
+                      e.target.style.transform = 'scale(1)';
+                    }}
                   />
                   <p className="text-gray-300 text-sm font-medium text-center">{tool.name}</p>
                   <p className="text-gray-500 text-xs mt-1">{tool.category}</p>

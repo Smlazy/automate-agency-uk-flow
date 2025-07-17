@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { UserMenu } from "@/components/auth/UserMenu";
 import { useAuth } from "@/hooks/useAuth";
@@ -8,6 +8,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
   const { user } = useAuth();
   const location = useLocation();
 
@@ -32,6 +33,15 @@ const Navigation = () => {
       scrollToSection('contact');
     }
   };
+
+  const solutionPages = [
+    { title: "Workflow Automation", path: "/solutions/workflow-automation" },
+    { title: "Communication Automation", path: "/solutions/communication-automation" },
+    { title: "Lead Generation", path: "/solutions/lead-generation" },
+    { title: "CRM Integration", path: "/solutions/crm-integration" },
+    { title: "Scheduling & Booking", path: "/solutions/scheduling-booking" },
+    { title: "Custom Integrations", path: "/solutions/custom-integrations" }
+  ];
 
   return (
     <header className="bg-[#0F0F0F] border-b border-[#1A1A1A] sticky top-0 z-50 backdrop-blur-sm">
@@ -60,13 +70,36 @@ const Navigation = () => {
           </div>
           
           <nav className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection('solutions')}
-              className="text-[#C0C0C0] hover:text-white transition-all duration-300 font-medium relative group"
+            {/* Solutions Dropdown */}
+            <div 
+              className="relative group"
+              onMouseEnter={() => setIsSolutionsOpen(true)}
+              onMouseLeave={() => setIsSolutionsOpen(false)}
             >
-              Services
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-200 group-hover:w-full"></span>
-            </button>
+              <button className="text-[#C0C0C0] hover:text-white transition-all duration-300 font-medium relative group flex items-center">
+                Solutions
+                <ChevronDown className="ml-1 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-200 group-hover:w-full"></span>
+              </button>
+              
+              {/* Dropdown Menu */}
+              <div className={`absolute top-full left-0 mt-2 w-64 bg-[#0F0F0F] border border-[#1A1A1A] rounded-lg shadow-xl transition-all duration-300 ${
+                isSolutionsOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+              }`}>
+                {solutionPages.map((solution, index) => (
+                  <Link 
+                    key={solution.title}
+                    to={solution.path} 
+                    className={`block px-4 py-3 text-[#C0C0C0] hover:text-white hover:bg-[#1A1A1A] transition-all duration-200 hover:pl-6 ${
+                      index !== solutionPages.length - 1 ? 'border-b border-[#1A1A1A]' : ''
+                    } ${index === 0 ? 'rounded-t-lg' : ''} ${index === solutionPages.length - 1 ? 'rounded-b-lg' : ''}`}
+                  >
+                    {solution.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
             <button 
               onClick={() => scrollToSection('process')}
               className="text-[#C0C0C0] hover:text-white transition-all duration-300 font-medium relative group"
@@ -137,12 +170,25 @@ const Navigation = () => {
                 </div>
 
                 <nav className="flex flex-col space-y-6">
-                  <button 
-                    onClick={() => scrollToSection('solutions')}
-                    className="text-[#C0C0C0] hover:text-white transition-all duration-300 font-medium py-3 border-l-2 border-transparent hover:border-emerald-500 pl-4 hover:pl-6 text-left min-h-[44px] flex items-center" 
-                  >
-                    Services
-                  </button>
+                  {/* Mobile Solutions Menu */}
+                  <div>
+                    <div className="text-[#C0C0C0] font-medium py-3 border-l-2 border-emerald-500 pl-4 mb-2">
+                      Solutions
+                    </div>
+                    <div className="ml-4 space-y-2">
+                      {solutionPages.map((solution) => (
+                        <Link 
+                          key={solution.title}
+                          to={solution.path} 
+                          className="block text-[#94a3b8] hover:text-white transition-all duration-300 py-2 pl-4 hover:pl-6 text-sm" 
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {solution.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
                   <button 
                     onClick={() => scrollToSection('process')}
                     className="text-[#C0C0C0] hover:text-white transition-all duration-300 font-medium py-3 border-l-2 border-transparent hover:border-emerald-500 pl-4 hover:pl-6 text-left min-h-[44px] flex items-center" 
