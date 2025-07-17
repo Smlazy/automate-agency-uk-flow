@@ -7,29 +7,112 @@ import Footer from '@/components/Footer';
 import SectionBackground from '@/components/SectionBackground';
 
 export default function CommunicationAutomation() {
-  const integrationTools = [
-    'Mailchimp', 'ConvertKit', 'HubSpot', 'Intercom', 'Zendesk', 'Slack',
-    'Microsoft Teams', 'WhatsApp Business', 'SMS Platforms', 'Calendar Apps', 'Zoom', 'ActiveCampaign'
+  const tools = [
+    {
+      name: "Mailchimp",
+      logo: "https://img.icons8.com/color/96/mailchimp.png",
+      category: "Email Marketing"
+    },
+    {
+      name: "HubSpot",
+      logo: "https://img.icons8.com/color/96/hubspot.png",
+      category: "CRM"
+    },
+    {
+      name: "Intercom",
+      logo: "https://img.icons8.com/color/96/intercom.png", 
+      category: "Customer Support"
+    },
+    {
+      name: "Zendesk",
+      logo: "https://img.icons8.com/color/96/zendesk.png",
+      category: "Customer Support"
+    },
+    {
+      name: "Microsoft Teams",
+      logo: "https://img.icons8.com/color/96/microsoft-teams.png",
+      category: "Internal Communication"
+    },
+    {
+      name: "WhatsApp Business",
+      logo: "https://img.icons8.com/color/96/whatsapp-business.png",
+      category: "Messaging"
+    },
+    {
+      name: "Twilio",
+      logo: "https://img.icons8.com/color/96/twilio.png",
+      category: "SMS"
+    },
+    {
+      name: "Calendly",
+      logo: "https://img.icons8.com/color/96/calendly.png",
+      category: "Scheduling"
+    },
+    {
+      name: "Gmail",
+      logo: "https://img.icons8.com/color/96/gmail.png",
+      category: "Email"
+    },
+    {
+      name: "Outlook",
+      logo: "https://img.icons8.com/color/96/microsoft-outlook-2019.png",
+      category: "Email"
+    },
+    {
+      name: "ActiveCampaign",
+      logo: "https://img.icons8.com/color/96/activecampaign.png",
+      category: "Marketing Automation"
+    },
+    {
+      name: "ConvertKit",
+      logo: "https://cdn.worldvectorlogo.com/logos/convertkit.svg",
+      category: "Email Marketing"
+    }
   ];
 
-  const achievements = [
-    { title: 'Increase customer engagement by 40-60%', icon: Target },
-    { title: 'Respond to enquiries within minutes, not hours', icon: Clock },
-    { title: 'Maintain consistent brand voice across all channels', icon: Check },
-    { title: 'Reduce communication workload by 70%', icon: TrendingUp },
-    { title: 'Improve customer satisfaction scores', icon: MessageSquare }
+  const benefits = [
+    {
+      title: "Instant Response Times",
+      description: "Respond to enquiries and requests within minutes, not hours",
+      impact: "Improve customer satisfaction scores"
+    },
+    {
+      title: "Personalised at Scale",
+      description: "Deliver relevant, timely messages to thousands of contacts",
+      impact: "Increase engagement rates significantly"
+    },
+    {
+      title: "Multi-Channel Coordination",
+      description: "Orchestrate consistent messaging across email, SMS, chat, and social",
+      impact: "Create seamless customer experiences"
+    },
+    {
+      title: "Smart Follow-Up Sequences", 
+      description: "Nurture leads and customers with intelligent, behaviour-triggered communications",
+      impact: "Boost conversion rates and retention"
+    },
+    {
+      title: "Reduced Communication Workload",
+      description: "Automate routine communications while maintaining personal touch",
+      impact: "Free up 60-70% of manual communication tasks"
+    },
+    {
+      title: "Never Miss Important Messages",
+      description: "Ensure every customer interaction is captured and responded to appropriately",
+      impact: "Eliminate communication gaps and lost opportunities"
+    }
   ];
 
   const processSteps = [
     {
       step: '1',
       title: 'Channel Assessment',
-      description: 'Identify all communication touchpoints and current processes'
+      description: 'Identify all communication touchpoints and current processes across your business'
     },
     {
       step: '2',
       title: 'Message Mapping',
-      description: 'Design personalised communication flows for each customer journey'
+      description: 'Design personalised communication flows for each customer journey stage'
     },
     {
       step: '3',
@@ -43,23 +126,27 @@ export default function CommunicationAutomation() {
     }
   ];
 
-  const industryExamples = [
+  const useCases = [
     {
-      industry: 'Real Estate',
-      description: 'Automated property alerts, viewing confirmations, and follow-up sequences',
-      benefits: ['50% faster lead response', 'Automated viewings', 'Higher conversion rates']
+      title: "Customer Support Automation",
+      description: "Instantly acknowledge enquiries, route tickets, and provide relevant information based on customer history.",
+      processes: ["Automatic ticket routing", "FAQ responses", "Escalation triggers"]
     },
     {
-      industry: 'Recruitment',
-      description: 'Candidate nurturing, interview scheduling, and status updates',
-      benefits: ['Better candidate experience', 'Faster placements', 'Reduced admin time']
+      title: "Marketing Nurture Sequences",
+      description: "Guide prospects through tailored email journeys based on their interests and engagement level.",
+      processes: ["Welcome sequences", "Abandoned cart recovery", "Re-engagement campaigns"]
     },
     {
-      industry: 'E-commerce',
-      description: 'Order confirmations, shipping updates, and review requests',
-      benefits: ['Improved customer retention', 'More reviews', 'Reduced support tickets']
+      title: "Event-Triggered Communications",
+      description: "Send personalised messages based on customer actions, milestones, or important dates.",
+      processes: ["Birthday messages", "Purchase confirmations", "Renewal reminders"]
     }
   ];
+
+  const navigateToContact = () => {
+    window.location.href = '/#contact';
+  };
 
   return (
     <div className="min-h-screen">
@@ -79,9 +166,12 @@ export default function CommunicationAutomation() {
               Never Miss a Customer Touchpoint Again
             </p>
             <p className="text-lg text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Automate personalised communications across all channels while maintaining the human touch your customers expect.
+              Automate personalised communications across all channels while maintaining the human touch that builds lasting customer relationships and drives business growth.
             </p>
-            <Button className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-emerald-500/25 transition-all duration-300">
+            <Button 
+              onClick={navigateToContact}
+              className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-emerald-500/25 transition-all duration-300"
+            >
               Book Free Consultation
               <ArrowRight className="ml-2" size={20} />
             </Button>
@@ -101,13 +191,16 @@ export default function CommunicationAutomation() {
             </p>
             
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-8">
-              {integrationTools.map((tool, index) => (
-                <Card key={index} className="bg-white/5 border-white/10 p-4 text-center hover:bg-white/10 transition-colors">
-                  <div className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-800 rounded-lg mx-auto mb-3 flex items-center justify-center filter grayscale hover:grayscale-0 transition-all duration-300">
-                    <span className="text-white text-xs font-bold">{tool.slice(0, 2)}</span>
-                  </div>
-                  <p className="text-gray-300 text-sm font-medium">{tool}</p>
-                </Card>
+              {tools.map((tool, index) => (
+                <div key={index} className="flex flex-col items-center p-4 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+                  <img 
+                    src={tool.logo} 
+                    alt={tool.name} 
+                    className="w-12 h-12 mb-2 filter grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" 
+                  />
+                  <p className="text-gray-300 text-sm font-medium text-center">{tool.name}</p>
+                  <p className="text-gray-500 text-xs mt-1">{tool.category}</p>
+                </div>
               ))}
             </div>
             
@@ -127,12 +220,11 @@ export default function CommunicationAutomation() {
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {achievements.map((achievement, index) => (
-                <Card key={index} className="bg-white/10 border-white/20 p-6 hover:bg-white/15 transition-colors">
-                  <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center mb-4">
-                    <achievement.icon className="text-white" size={24} />
-                  </div>
-                  <h3 className="text-white font-bold mb-2">{achievement.title}</h3>
+              {benefits.map((benefit, index) => (
+                <Card key={index} className="bg-white/10 border-white/20 p-6 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/40">
+                  <h3 className="text-emerald-400 font-bold text-lg mb-3">{benefit.title}</h3>
+                  <p className="text-gray-300 mb-3 leading-relaxed">{benefit.description}</p>
+                  <p className="text-green-400 font-medium text-sm">{benefit.impact}</p>
                 </Card>
               ))}
             </div>
@@ -163,27 +255,27 @@ export default function CommunicationAutomation() {
         </div>
       </SectionBackground>
 
-      {/* Industry Examples Section */}
+      {/* Use Cases Section */}
       <SectionBackground className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-white text-center mb-12">
-              Industry Examples
+              Common Use Cases
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {industryExamples.map((example, index) => (
-                <Card key={index} className="bg-white/10 border-white/20 p-6 hover:bg-white/15 transition-colors">
-                  <h3 className="text-emerald-400 font-bold text-lg mb-3">{example.industry}</h3>
-                  <p className="text-gray-300 mb-4">{example.description}</p>
-                  <div className="space-y-2">
-                    {example.benefits.map((benefit, idx) => (
-                      <div key={idx} className="flex items-center text-gray-300">
-                        <Check className="text-emerald-500 mr-2 flex-shrink-0" size={16} />
-                        <span className="text-sm">{benefit}</span>
-                      </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {useCases.map((useCase, index) => (
+                <Card key={index} className="bg-slate-900/80 border-white/20 p-6 hover:bg-slate-900/90 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/40">
+                  <h3 className="text-emerald-400 font-bold text-lg mb-3">{useCase.title}</h3>
+                  <p className="text-gray-300 mb-4 leading-relaxed">{useCase.description}</p>
+                  <ul className="space-y-1">
+                    {useCase.processes.map((process, idx) => (
+                      <li key={idx} className="text-gray-400 text-sm flex items-center">
+                        <span className="w-2 h-2 bg-green-400 rounded-full mr-2 flex-shrink-0"></span>
+                        {process}
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </Card>
               ))}
             </div>
@@ -202,12 +294,12 @@ export default function CommunicationAutomation() {
               Transform how you connect with customers across every touchpoint
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-emerald-500/25 transition-all duration-300">
+              <Button 
+                onClick={navigateToContact}
+                className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-emerald-500/25 transition-all duration-300"
+              >
                 Book Free Consultation
                 <ArrowRight className="ml-2" size={20} />
-              </Button>
-              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 px-8 py-4 text-lg font-semibold rounded-lg">
-                View Pricing
               </Button>
             </div>
             <div className="mt-8 flex items-center justify-center space-x-8 text-gray-400">
