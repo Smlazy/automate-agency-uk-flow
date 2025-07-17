@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -7,7 +6,7 @@ import SectionBackground from '@/components/SectionBackground';
 
 const Pricing = () => {
   const [selectedPackage, setSelectedPackage] = useState('growth');
-  const [selectedSupport, setSelectedSupport] = useState('basic');
+  const [selectedSupport, setSelectedSupport] = useState('premium');
 
   const setupPackages = [
     {
@@ -97,7 +96,7 @@ const Pricing = () => {
         "Minor updates and improvements",
         "Monthly performance reports"
       ],
-      recommended: true
+      recommended: false
     },
     {
       id: 'premium',
@@ -112,7 +111,7 @@ const Pricing = () => {
         "Workflow improvements and additions",
         "Dedicated support channel"
       ],
-      recommended: false
+      recommended: true
     },
     {
       id: 'enterprise',
@@ -133,19 +132,16 @@ const Pricing = () => {
 
   const handlePackageSelect = (packageId: string) => {
     setSelectedPackage(packageId);
-    // Store selected package in session storage for checkout flow
     sessionStorage.setItem('selectedPackage', packageId);
   };
 
   const handleSupportSelect = (supportId: string) => {
     setSelectedSupport(selectedSupport === supportId ? null : supportId);
-    // Store selected support in session storage for checkout flow
     sessionStorage.setItem('selectedSupport', supportId);
   };
 
   const handleGetStarted = (packageId: string) => {
     handlePackageSelect(packageId);
-    // Redirect to signup with package selection
     window.location.href = '/signup';
   };
 

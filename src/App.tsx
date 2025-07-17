@@ -21,6 +21,12 @@ import DashboardSettings from "./pages/DashboardSettings";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
+import WorkflowAutomation from "./pages/solutions/WorkflowAutomation";
+import CommunicationAutomation from "./pages/solutions/CommunicationAutomation";
+import LeadGeneration from "./pages/solutions/LeadGeneration";
+import CRMIntegration from "./pages/solutions/CRMIntegration";
+import SchedulingBooking from "./pages/solutions/SchedulingBooking";
+import CustomIntegrations from "./pages/solutions/CustomIntegrations";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +49,12 @@ const App = () => (
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/cookies" element={<CookiePolicy />} />
+            <Route path="/solutions/workflow-automation" element={<WorkflowAutomation />} />
+            <Route path="/solutions/communication-automation" element={<CommunicationAutomation />} />
+            <Route path="/solutions/lead-generation" element={<LeadGeneration />} />
+            <Route path="/solutions/crm-integration" element={<CRMIntegration />} />
+            <Route path="/solutions/scheduling-booking" element={<SchedulingBooking />} />
+            <Route path="/solutions/custom-integrations" element={<CustomIntegrations />} />
             <Route path="/profile" element={
               <ProtectedRoute>
                 <Profile />

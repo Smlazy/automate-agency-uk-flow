@@ -66,7 +66,7 @@ export default function Blog() {
                   onClick={() => setSelectedCategory(category)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                     selectedCategory === category
-                      ? 'bg-emerald-600 text-white'
+                      ? 'bg-gradient-to-r from-emerald-600 to-cyan-600 text-white shadow-lg'
                       : 'bg-white/10 text-gray-300 hover:bg-white/20'
                   }`}
                 >
@@ -91,7 +91,9 @@ export default function Blog() {
                   </div>
                   <div className="md:w-1/2 p-8">
                     <div className="flex items-center gap-4 mb-4">
-                      <Badge className="bg-emerald-600 text-white">{featuredPost.category}</Badge>
+                      <Badge className="bg-gradient-to-r from-emerald-600 to-cyan-600 text-white border-none">
+                        {featuredPost.category}
+                      </Badge>
                       <div className="flex items-center text-gray-400 text-sm">
                         <Calendar className="mr-1" size={14} />
                         {featuredPost.date}
@@ -116,7 +118,7 @@ export default function Blog() {
                       
                       <Link
                         to={`/blog/${featuredPost.slug}`}
-                        className="inline-flex items-center text-emerald-400 hover:text-emerald-300 font-medium group/link"
+                        className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white font-medium rounded-lg hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 group/link"
                       >
                         Read More
                         <ArrowRight className="ml-2 group-hover/link:translate-x-1 transition-transform" size={16} />
@@ -152,7 +154,9 @@ export default function Blog() {
                     
                     <CardContent className="p-6">
                       <div className="flex items-center gap-4 mb-4">
-                        <Badge className="bg-emerald-600 text-white">{post.category}</Badge>
+                        <Badge className="bg-gradient-to-r from-emerald-600 to-cyan-600 text-white border-none">
+                          {post.category}
+                        </Badge>
                         <div className="flex items-center text-gray-400 text-sm">
                           <Calendar className="mr-1" size={12} />
                           {post.date}
@@ -175,7 +179,7 @@ export default function Blog() {
                         
                         <Link
                           to={`/blog/${post.slug}`}
-                          className="inline-flex items-center text-emerald-400 hover:text-emerald-300 text-sm font-medium group/link"
+                          className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white text-sm font-medium rounded-md hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 group/link"
                         >
                           Read More
                           <ArrowRight className="ml-1 group-hover/link:translate-x-1 transition-transform" size={14} />

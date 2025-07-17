@@ -1,6 +1,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Zap, Workflow, BarChart3, Users, MessageSquare, Calendar } from "lucide-react";
+import { Zap, Workflow, Magnet, Users, MessageSquare, Calendar } from "lucide-react";
 import SectionBackground from '@/components/SectionBackground';
 
 const Solutions = () => {
@@ -18,10 +18,10 @@ const Solutions = () => {
       features: ["Email sequences", "SMS campaigns", "Slack integration", "Customer support"]
     },
     {
-      icon: BarChart3,
-      title: "Data & Analytics",
-      description: "Transform raw data into actionable insights with automated reporting and real-time dashboards.",
-      features: ["Real-time dashboards", "Automated reports", "Data synchronization", "Performance tracking"]
+      icon: Magnet,
+      title: "Lead Generation",
+      description: "Automate lead capture, qualification, and nurturing processes to transform prospects into customers seamlessly.",
+      features: ["Automated lead scoring and qualification", "Multi-channel lead capture systems", "Intelligent lead nurturing workflows", "CRM synchronisation and data enrichment"]
     },
     {
       icon: Users,
