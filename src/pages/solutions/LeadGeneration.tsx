@@ -1,3 +1,4 @@
+
 import { ArrowRight, CheckCircle, Magnet, Target, Users, BarChart3 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -128,19 +129,19 @@ const LeadGeneration = () => {
 
   const useCases = [
     {
-      title: "Website Lead Capture",
-      description: "Automatically capture visitor information through intelligent forms, exit-intent popups, and content downloads.",
-      processes: ["Contact form automation", "Content gate management", "Exit-intent capture"]
+      title: "Real Estate Lead Management",
+      description: "Automatically capture property enquiries and nurture potential buyers through intelligent follow-up sequences.",
+      processes: ["Property enquiry automation", "Buyer qualification", "Viewing schedule automation"]
     },
     {
-      title: "Social Media Lead Generation",
-      description: "Generate and nurture leads from social platforms with automated follow-up sequences and engagement tracking.",
-      processes: ["LinkedIn outreach", "Facebook lead ads", "Social media monitoring"]
+      title: "Education Enrollment",
+      description: "Streamline course enquiry handling and guide prospects through enrollment processes automatically.",
+      processes: ["Course enquiry capture", "Student nurturing workflows", "Enrollment automation"]
     },
     {
-      title: "Event & Webinar Leads",
-      description: "Capture, qualify, and follow up with event attendees through automated sequences tailored to their level of engagement.",
-      processes: ["Registration automation", "Follow-up sequences", "Engagement scoring"]
+      title: "Trade Services Leads",
+      description: "Capture service requests and follow up with potential customers through automated communication sequences.",
+      processes: ["Service request capture", "Quote generation", "Follow-up automation"]
     }
   ];
 
@@ -166,7 +167,7 @@ const LeadGeneration = () => {
               Turn Visitors Into Qualified Prospects Automatically
             </p>
             <p className="text-lg text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Capture, qualify, and nurture leads through intelligent automation that works around the clock to identify and convert your most promising prospects.
+              Capture, qualify, and nurture leads through intelligent automation that works around the clock to identify and convert your most promising prospects across all industries.
             </p>
             <Button
               onClick={navigateToContact}
@@ -199,14 +200,16 @@ const LeadGeneration = () => {
                     opacity: 0.8
                   }}
                   onMouseEnter={(e) => {
-                    e.target.style.filter = 'none';
-                    e.target.style.opacity = '1';
-                    e.target.style.transform = 'scale(1.05)';
+                    const img = e.target as HTMLImageElement;
+                    img.style.filter = 'none';
+                    img.style.opacity = '1';
+                    img.style.transform = 'scale(1.05)';
                   }}
                   onMouseLeave={(e) => {
-                    e.target.style.filter = 'sepia(100%) saturate(150%) hue-rotate(180deg) brightness(0.9) contrast(1.1)';
-                    e.target.style.opacity = '0.8';
-                    e.target.style.transform = 'scale(1)';
+                    const img = e.target as HTMLImageElement;
+                    img.style.filter = 'sepia(100%) saturate(150%) hue-rotate(180deg) brightness(0.9) contrast(1.1)';
+                    img.style.opacity = '0.8';
+                    img.style.transform = 'scale(1)';
                   }}
                 />
                 <span className="text-sm font-semibold text-gray-300 text-center">{tool.name}</span>

@@ -108,6 +108,116 @@ All colors MUST be HSL.
   .header-cta-button:hover::before {
     left: 100%;
   }
+
+  /* Industry niches section styling */
+  .trusted-by-section {
+    margin-top: 3rem;
+  }
+
+  .trusted-by-text {
+    color: #64748b;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .industries-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .industry-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 160px;
+  }
+
+  .industry-icon {
+    width: 3rem;
+    height: 3rem;
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: #22d3ee;
+    transition: all 0.3s ease;
+  }
+
+  .industry-group:hover .industry-icon {
+    background: rgba(34, 211, 238, 0.1);
+    border-color: rgba(34, 211, 238, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .industry-labels {
+    text-align: center;
+  }
+
+  .industry-primary {
+    color: #cbd5e1;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .industry-secondary {
+    color: #64748b;
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+
+  /* Mobile responsive styling */
+  @media (max-width: 1024px) {
+    .industries-container {
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .industries-container {
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .industry-group {
+      min-width: 120px;
+    }
+    
+    .industry-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    
+    .industry-primary {
+      font-size: 0.85rem;
+    }
+    
+    .industry-secondary {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .industries-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      max-width: 300px;
+      margin: 0 auto 2rem;
+    }
+    
+    .industry-group {
+      min-width: auto;
+    }
+  }
 }
 
 /* Ensure smooth scrolling for anchor links */

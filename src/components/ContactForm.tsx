@@ -93,9 +93,12 @@ const ContactForm = () => {
                 <SelectValue placeholder="Select your industry" />
               </SelectTrigger>
               <SelectContent className="bg-[rgba(15,23,42,0.9)] border-[rgba(34,211,238,0.2)]">
-                <SelectItem value="recruitment" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">Recruitment Agency</SelectItem>
-                <SelectItem value="realestate" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">Real Estate Agency</SelectItem>
-                <SelectItem value="marketing" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">Marketing Agency</SelectItem>
+                <SelectItem value="saas" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">SaaS & Technology</SelectItem>
+                <SelectItem value="property" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">Property & Real Estate</SelectItem>
+                <SelectItem value="marketing" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">Marketing & Advertising</SelectItem>
+                <SelectItem value="recruitment" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">Recruitment & HR</SelectItem>
+                <SelectItem value="education" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">Education & Training</SelectItem>
+                <SelectItem value="trade" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">Trade & Professional Services</SelectItem>
                 <SelectItem value="other" className="text-white hover:bg-[rgba(30,41,59,0.6)] focus:bg-[rgba(30,41,59,0.6)]">Other</SelectItem>
               </SelectContent>
             </Select>
