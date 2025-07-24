@@ -1,4 +1,3 @@
-
 import { ArrowRight, CheckCircle, MessageSquare, Zap, Users, BarChart3 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -8,6 +7,8 @@ import Footer from '@/components/Footer';
 import SectionBackground from '@/components/SectionBackground';
 
 const CommunicationAutomation = () => {
+  
+
   const tools = [
     {
       name: "Mailchimp",
@@ -296,7 +297,7 @@ const CommunicationAutomation = () => {
             </div>
           </div>
         </div>
-      </section>
+      </SectionBackground>
 
       {/* CTA Section */}
       <section className="py-20">
