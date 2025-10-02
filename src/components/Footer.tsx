@@ -79,14 +79,14 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('contact')} className="hover:text-white transition-colors duration-300 hover:-translate-y-0.5 inline-block">
-                  Contact Us
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection('contact')} className="hover:text-white transition-colors duration-300 hover:-translate-y-0.5 inline-block">
-                  Free Strategy Call
-                </button>
+                <a 
+                  href="https://calendly.com/vantive-info/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors duration-300 hover:-translate-y-0.5 inline-block"
+                >
+                  Book Consultation
+                </a>
               </li>
             </ul>
           </div>
