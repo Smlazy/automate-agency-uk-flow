@@ -79,11 +79,6 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('pricing')} className="hover:text-white transition-colors duration-300 hover:-translate-y-0.5 inline-block">
-                  Pricing
-                </button>
-              </li>
-              <li>
                 <button onClick={() => scrollToSection('contact')} className="hover:text-white transition-colors duration-300 hover:-translate-y-0.5 inline-block">
                   Contact Us
                 </button>

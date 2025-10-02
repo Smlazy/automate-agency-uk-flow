@@ -2,14 +2,11 @@
 import { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { UserMenu } from "@/components/auth/UserMenu";
-import { useAuth } from "@/hooks/useAuth";
 import { Link, useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
-  const { user } = useAuth();
   const location = useLocation();
 
   const scrollToSection = (id: string) => {
@@ -22,16 +19,12 @@ const Navigation = () => {
     setIsMenuOpen(false);
   };
 
-  const navigateToContact = () => {
-    if (location.pathname !== '/') {
-      window.location.href = '/';
-      setTimeout(() => {
-        const element = document.getElementById('contact');
-        element?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    } else {
-      scrollToSection('contact');
+  const openCalendly = () => {
+    const calendly = (window as any).Calendly;
+    if (calendly) {
+      calendly.initPopupWidget({ url: 'https://calendly.com/vantive-info/30min' });
     }
+    return false;
   };
 
   const solutionPages = [
@@ -107,44 +100,19 @@ const Navigation = () => {
               Process
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-200 group-hover:w-full"></span>
             </button>
-            <button 
-              onClick={() => scrollToSection('pricing')}
-              className="text-[#C0C0C0] hover:text-white transition-all duration-300 font-medium relative group"
-            >
-              Pricing
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-200 group-hover:w-full"></span>
-            </button>
             <Link to="/blog" className="text-[#C0C0C0] hover:text-white transition-all duration-300 font-medium relative group">
               Blog
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-200 group-hover:w-full"></span>
             </Link>
-            <button 
-              onClick={navigateToContact}
-              className="text-[#C0C0C0] hover:text-white transition-all duration-300 font-medium relative group"
-            >
-              Contact
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-200 group-hover:w-full"></span>
-            </button>
           </nav>
 
           <div className="flex items-center space-x-3">
-            {user ? (
-              <UserMenu />
-            ) : (
-              <div className="flex items-center space-x-2 md:space-x-3">
-                <button
-                  onClick={navigateToContact}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 md:px-6 md:py-2.5 rounded-md font-medium transition-all duration-300 hover:shadow-lg hover:shadow-emerald-600/20 hover:-translate-y-1 text-sm md:text-base"
-                >
-                  Book Free Consultation
-                </button>
-                <Link to="/auth">
-                  <Button className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 md:px-6 md:py-2.5 rounded-md font-medium transition-all duration-300 hover:shadow-lg hover:shadow-indigo-600/20 hover:-translate-y-1 text-sm md:text-base">
-                    Sign In
-                  </Button>
-                </Link>
-              </div>
-            )}
+            <button
+              onClick={openCalendly}
+              className="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 md:px-6 md:py-2.5 rounded-md font-medium transition-all duration-300 hover:shadow-lg hover:shadow-emerald-600/20 hover:-translate-y-1 text-sm md:text-base"
+            >
+              Book Consultation
+            </button>
           </div>
         </div>
 
@@ -195,12 +163,6 @@ const Navigation = () => {
                   >
                     Process
                   </button>
-                  <button 
-                    onClick={() => scrollToSection('pricing')}
-                    className="text-[#C0C0C0] hover:text-white transition-all duration-300 font-medium py-3 border-l-2 border-transparent hover:border-emerald-500 pl-4 hover:pl-6 text-left min-h-[44px] flex items-center" 
-                  >
-                    Pricing
-                  </button>
                   <Link 
                     to="/blog" 
                     className="text-[#C0C0C0] hover:text-white transition-all duration-300 font-medium py-3 border-l-2 border-transparent hover:border-emerald-500 pl-4 hover:pl-6 min-h-[44px] flex items-center" 
@@ -208,28 +170,15 @@ const Navigation = () => {
                   >
                     Blog
                   </Link>
-                  <button 
-                    onClick={navigateToContact}
-                    className="text-[#C0C0C0] hover:text-white transition-all duration-300 font-medium py-3 border-l-2 border-transparent hover:border-emerald-500 pl-4 hover:pl-6 text-left min-h-[44px] flex items-center" 
-                  >
-                    Contact
-                  </button>
                 </nav>
 
                 <div className="mt-8 space-y-4">
                   <button
-                    onClick={navigateToContact}
+                    onClick={openCalendly}
                     className="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-md font-medium transition-all duration-300 min-h-[44px] hover:-translate-y-1"
                   >
-                    Book Free Consultation
+                    Book Consultation
                   </button>
-                  <Link 
-                    to="/auth" 
-                    className="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-md font-medium transition-all duration-300 min-h-[44px] flex items-center justify-center hover:-translate-y-1"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Sign In
-                  </Link>
                 </div>
               </div>
             </div>
