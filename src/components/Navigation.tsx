@@ -19,13 +19,6 @@ const Navigation = () => {
     setIsMenuOpen(false);
   };
 
-  const openCalendly = () => {
-    const calendly = (window as any).Calendly;
-    if (calendly) {
-      calendly.initPopupWidget({ url: 'https://calendly.com/vantive-info/30min' });
-    }
-    return false;
-  };
 
   const solutionPages = [
     { title: "Workflow Automation", path: "/solutions/workflow-automation" },
@@ -107,12 +100,14 @@ const Navigation = () => {
           </nav>
 
           <div className="flex items-center space-x-3">
-            <button
-              onClick={openCalendly}
+            <a
+              href="https://calendly.com/vantive-info/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 md:px-6 md:py-2.5 rounded-md font-medium transition-all duration-300 hover:shadow-lg hover:shadow-emerald-600/20 hover:-translate-y-1 text-sm md:text-base"
             >
               Book Consultation
-            </button>
+            </a>
           </div>
         </div>
 
@@ -173,12 +168,14 @@ const Navigation = () => {
                 </nav>
 
                 <div className="mt-8 space-y-4">
-                  <button
-                    onClick={openCalendly}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-md font-medium transition-all duration-300 min-h-[44px] hover:-translate-y-1"
+                  <a
+                    href="https://calendly.com/vantive-info/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-md font-medium transition-all duration-300 min-h-[44px] hover:-translate-y-1 block text-center"
                   >
                     Book Consultation
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
