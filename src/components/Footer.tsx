@@ -95,7 +95,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 Vantive Digital. All rights reserved. • UK Company Registration: [Number] • VAT: [Number]
+              © 2024 Vantive Digital. All rights reserved.
             </div>
             <div className="flex space-x-6">
               <Link to="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors duration-300 hover:-translate-y-0.5 inline-block">
